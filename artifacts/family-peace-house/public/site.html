@@ -393,6 +393,104 @@
   @media(prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   }
+
+  /* ====== Room Detail Modal ====== */
+  .rd-overlay{position:fixed;inset:0;background:rgba(12,8,5,.78);backdrop-filter:blur(6px);
+    z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;
+    opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+  .rd-overlay.open{opacity:1;visibility:visible}
+  .rd-modal{background:#fff;border-radius:22px;width:100%;max-width:960px;max-height:92vh;
+    display:grid;grid-template-columns:1.15fr 1fr;overflow:hidden;
+    box-shadow:0 50px 120px rgba(0,0,0,.45);
+    transform:translateY(50px) scale(.96);transition:transform .4s cubic-bezier(.34,1.4,.64,1)}
+  .rd-overlay.open .rd-modal{transform:translateY(0) scale(1)}
+
+  /* Gallery panel */
+  .rd-gallery{position:relative;background:#1a1512;display:flex;flex-direction:column;overflow:hidden}
+  .rd-main-img{flex:1;min-height:0;overflow:hidden;position:relative}
+  .rd-main-img img{width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s ease;will-change:transform}
+  .rd-main-img:hover img{transform:scale(1.04)}
+  .rd-nav-btn{position:absolute;top:50%;transform:translateY(-50%);
+    background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.22);color:#fff;
+    width:42px;height:42px;border-radius:50%;display:flex;align-items:center;
+    justify-content:center;cursor:pointer;transition:.25s;font-size:20px;z-index:2;line-height:1}
+  .rd-nav-btn:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-50%) scale(1.1)}
+  .rd-nav-prev{left:14px}
+  .rd-nav-next{right:14px}
+  .rd-img-counter{position:absolute;bottom:12px;right:14px;
+    background:rgba(0,0,0,.55);color:#fff;font-size:11px;
+    padding:4px 11px;border-radius:20px;letter-spacing:.5px;pointer-events:none}
+  .rd-cat-badge{position:absolute;top:16px;left:16px;
+    background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:#fff;
+    font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:6px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.18);pointer-events:none}
+  .rd-thumbs{display:flex;gap:8px;padding:12px 14px;
+    background:rgba(0,0,0,.5);overflow-x:auto;flex-shrink:0;scroll-behavior:smooth}
+  .rd-thumbs::-webkit-scrollbar{height:3px}
+  .rd-thumbs::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+  .rd-thumb{width:62px;height:44px;border-radius:7px;object-fit:cover;cursor:pointer;
+    opacity:.5;border:2px solid transparent;transition:.2s;flex-shrink:0}
+  .rd-thumb.active,.rd-thumb:hover{opacity:1;border-color:var(--accent)}
+
+  /* Details panel */
+  .rd-details{display:flex;flex-direction:column;background:#fff;overflow:hidden;max-height:92vh}
+  .rd-top-bar{display:flex;justify-content:space-between;align-items:center;
+    padding:20px 26px 12px;flex-shrink:0;border-bottom:1px solid #f5f0ea}
+  .rd-room-label{font-size:10.5px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;color:var(--accent);
+    background:#fff5f0;padding:5px 12px;border-radius:20px;border:1px solid #fde0d0}
+  .rd-close-btn{width:34px;height:34px;border-radius:50%;background:#f5f0ea;border:none;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;
+    font-size:16px;color:var(--dark);transition:.25s;line-height:1}
+  .rd-close-btn:hover{background:var(--accent);color:#fff;transform:rotate(90deg)}
+  .rd-scroll{overflow-y:auto;flex:1;padding:20px 26px 0}
+  .rd-scroll::-webkit-scrollbar{width:3px}
+  .rd-scroll::-webkit-scrollbar-thumb{background:#e5dfd6;border-radius:2px}
+  .rd-title{font-family:'Cormorant Garamond',serif;font-size:27px;font-weight:500;
+    color:var(--dark);line-height:1.2;margin-bottom:3px}
+  .rd-subtitle{font-size:13.5px;color:var(--muted);font-style:italic;margin-bottom:16px}
+  .rd-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+  .rd-tag{font-size:11.5px;padding:5px 12px;border-radius:20px;background:#f5f0ea;
+    color:var(--dark);border:1px solid #ede8e0;font-weight:500}
+  .rd-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:18px;
+    border-radius:12px;overflow:hidden;border:1px solid #f0ebe3;background:#f0ebe3;gap:1px}
+  .rd-stat-cell{background:#fff;padding:13px 8px;text-align:center}
+  .rd-stat-cell strong{display:block;font-family:'Cormorant Garamond',serif;
+    font-size:18px;line-height:1.2;color:var(--dark)}
+  .rd-stat-cell span{font-size:10.5px;color:var(--muted);margin-top:2px;display:block;letter-spacing:.3px}
+  .rd-score-row{display:flex;align-items:center;gap:10px;margin-bottom:16px;
+    background:#fff8f5;border-radius:10px;padding:11px 14px;border:1px solid #fde0d0}
+  .rd-score-pill{background:var(--accent);color:#fff;font-size:17px;font-weight:700;
+    border-radius:7px;padding:5px 12px;font-family:'Cormorant Garamond',serif;line-height:1;flex-shrink:0}
+  .rd-score-info{font-size:12px;color:var(--muted);line-height:1.5}
+  .rd-score-info b{display:block;font-size:13px;color:var(--dark);font-weight:600}
+  .rd-desc{font-size:13.5px;color:var(--muted);line-height:1.8;
+    border-top:1px solid #f5f0ea;padding-top:15px;margin-bottom:18px}
+  .rd-section{margin-bottom:16px}
+  .rd-sec-heading{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;
+    color:var(--dark);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .rd-sec-heading::after{content:'';flex:1;height:1px;background:#f0ebe3}
+  .rd-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:5px 10px}
+  .rd-list li{font-size:12.5px;color:var(--muted);display:flex;align-items:flex-start;gap:6px;line-height:1.5}
+  .rd-list li::before{content:'✓';color:var(--accent);font-weight:700;font-size:10px;flex-shrink:0;margin-top:3px}
+  .rd-no-smoke{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);
+    background:#f9f7f4;border-radius:8px;padding:9px 13px;margin-bottom:6px;border:1px solid #ede8e0}
+  .rd-cta-bar{flex-shrink:0;padding:14px 26px;border-top:1px solid #f0ebe3;
+    display:flex;gap:10px;align-items:center;background:#fff}
+  .rd-book-btn{flex:1;background:var(--accent);color:#fff;padding:13px 18px;border-radius:9px;
+    font-weight:700;text-transform:uppercase;letter-spacing:1.5px;font-size:11.5px;
+    text-align:center;display:block;transition:.3s}
+  .rd-book-btn:hover{background:var(--accent-dark);box-shadow:0 8px 22px rgba(232,104,58,.3);transform:translateY(-2px)}
+  .rd-bcom{font-size:11.5px;color:var(--muted);white-space:nowrap}
+  .rd-bcom a{color:var(--accent);font-weight:600;text-decoration:underline}
+
+  @media(max-width:780px){
+    .rd-modal{grid-template-columns:1fr;max-height:96vh}
+    .rd-gallery{height:240px;flex-shrink:0}
+    .rd-details{max-height:none}
+  }
 </style>
 </head>
 <body>
@@ -502,7 +600,7 @@
     </div>
 
     <!-- 01 Single Private -->
-    <div class="room">
+    <div class="room" data-room="1">
       <div class="room-img-wrap reveal-l">
         <span class="room-deco"></span>
         <div class="room-img">
@@ -522,12 +620,12 @@
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></em> Garden or terrace view</span>
         </div>
-        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
+        <a href="javascript:void(0)" class="btn-outline view-room-btn">View Details <span>→</span></a>
       </div>
     </div>
 
     <!-- 02 Double Private -->
-    <div class="room reverse">
+    <div class="room reverse" data-room="2">
       <div class="room-img-wrap reveal-r">
         <span class="room-deco"></span>
         <div class="room-img">
@@ -547,12 +645,12 @@
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></em> Free toiletries</span>
         </div>
-        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
+        <a href="javascript:void(0)" class="btn-outline view-room-btn">View Details <span>→</span></a>
       </div>
     </div>
 
     <!-- 03 Triple Private -->
-    <div class="room">
+    <div class="room" data-room="3">
       <div class="room-img-wrap reveal-l">
         <span class="room-deco"></span>
         <div class="room-img">
@@ -572,7 +670,7 @@
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
           <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></em> Garden or terrace view</span>
         </div>
-        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
+        <a href="javascript:void(0)" class="btn-outline view-room-btn">View Details <span>→</span></a>
       </div>
     </div>
 
@@ -583,7 +681,7 @@
         <p style="font-size:14px;color:var(--muted);margin-top:6px">Same warm hospitality and free WiFi — shared shower &amp; toilet for solo travellers and couples on a budget.</p>
       </div>
       <div class="budget-grid">
-        <div class="budget-card">
+        <div class="budget-card" data-room="4">
           <img src="/images/courtyard-flags.png" alt="Single Room with Shared Shower and Toilet">
           <div class="budget-body">
             <span class="eyebrow" style="font-size:10px;justify-content:flex-start">04 — Solo Budget</span>
@@ -593,10 +691,10 @@
               <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
               <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
             </ul>
-            <a href="#booking" class="btn-outline" style="margin-top:20px;font-size:12px;padding:10px 20px">Book <span>→</span></a>
+            <a href="javascript:void(0)" class="btn-outline view-room-btn" style="margin-top:20px;font-size:12px;padding:10px 20px">View Details <span>→</span></a>
           </div>
         </div>
-        <div class="budget-card">
+        <div class="budget-card" data-room="5">
           <img src="/images/courtyard-breakfast.png" alt="Double Room with Shared Toilet">
           <div class="budget-body">
             <span class="eyebrow" style="font-size:10px;justify-content:flex-start">05 — Budget Couple</span>
@@ -606,7 +704,7 @@
               <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
               <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
             </ul>
-            <a href="#booking" class="btn-outline" style="margin-top:20px;font-size:12px;padding:10px 20px">Book <span>→</span></a>
+            <a href="javascript:void(0)" class="btn-outline view-room-btn" style="margin-top:20px;font-size:12px;padding:10px 20px">View Details <span>→</span></a>
           </div>
         </div>
       </div>
@@ -1152,6 +1250,183 @@
     });
   },{threshold:.4});
   counters.forEach(c=>cIO.observe(c));
+
+  // ====== Room Detail Modal ======
+  const ROOMS=[
+    {id:1,num:'01',label:'Solo Traveller',
+     name:'Single Room',subtitle:'with Private Bathroom',
+     size:'11 m²',beds:'1 single bed',guests:1,score:8.2,reviews:49,
+     desc:'The single room provides soundproof walls, a seating area, and a terrace with garden views — plus a private bathroom with shower. Comfy beds rated 8.2 by verified guests.',
+     tags:['Garden view','Private bathroom','Soundproofing','Terrace','Free WiFi'],
+     bathroom:['Free toiletries','Shower','Bidet','Toilet','Towels','Slippers','Toilet paper'],
+     view:['Garden view','Terrace access'],
+     facilities:['Terrace','Safety deposit box','Socket near bed','Desk','Seating area','Soundproofing','Fan','Wake-up service','Carpeted','Laptop safe','Clothes rack'],
+     smoking:'No smoking',
+     images:['/images/room-twin.png','/images/courtyard-flags.png','/images/exterior.png']},
+    {id:2,num:'02',label:'Couples',
+     name:'Double Room',subtitle:'with Private Bathroom',
+     size:'14 m²',beds:'1 extra-large double bed',guests:2,score:8.0,reviews:52,
+     desc:'Spacious double room with an extra-large bed, private en-suite bathroom with shower, work desk, soundproofing, and peaceful garden or terrace views.',
+     tags:['Garden view','Private bathroom','Soundproofing','Terrace','Free WiFi'],
+     bathroom:['Free toiletries','Shower','Toilet','Towels','Slippers','Toilet paper'],
+     view:['Garden view','Terrace view'],
+     facilities:['Terrace','Socket near bed','Desk','Soundproofing','Fan','Wake-up service','Carpeted','Laptop safe','Clothes rack'],
+     smoking:'No smoking',
+     images:['/images/exterior.png','/images/room-twin.png','/images/courtyard-flags.png']},
+    {id:3,num:'03',label:'Groups & Families',
+     name:'Triple Room',subtitle:'with Private Bathroom',
+     size:'18 m²',beds:'3 single beds',guests:3,score:8.3,reviews:28,
+     desc:'Our largest room — three separate single beds, private bathroom, and garden views. Ideal for families or groups travelling together in the heart of Thamel.',
+     tags:['Garden view','Private bathroom','Soundproofing','Family room','Free WiFi'],
+     bathroom:['Free toiletries','Shower','Toilet','Towels','Slippers','Toilet paper'],
+     view:['Garden view'],
+     facilities:['Socket near bed','Desk','Seating area','Soundproofing','Fan','Wake-up service','Carpeted','Laptop safe','Clothes rack'],
+     smoking:'No smoking',
+     images:['/images/room-family.png','/images/courtyard-flags.png','/images/courtyard-breakfast.png']},
+    {id:4,num:'04',label:'Solo Budget',
+     name:'Single Room',subtitle:'with Shared Shower & Toilet',
+     size:'10 m²',beds:'1 single bed',guests:1,score:7.9,reviews:35,
+     desc:'A comfortable budget single room with shared shower and toilet facilities. Same warm Nepali hospitality, free WiFi, and full access to the courtyard and terrace.',
+     tags:['Free WiFi','Shared bathroom','Garden view','Budget option'],
+     bathroom:['Shared shower','Shared toilet','Towels available'],
+     view:['Garden view'],
+     facilities:['Socket near bed','Fan','Wake-up service','Clothes rack','Free WiFi'],
+     smoking:'No smoking',
+     images:['/images/courtyard-flags.png','/images/courtyard-breakfast.png','/images/exterior.png']},
+    {id:5,num:'05',label:'Budget Couple',
+     name:'Double Room',subtitle:'with Shared Toilet',
+     size:'12 m²',beds:'1 extra-large double bed',guests:2,score:7.8,reviews:23,
+     desc:'A cosy double room with an extra-large bed and shared toilet. Free WiFi throughout, full access to all common areas — great value for couples on a budget.',
+     tags:['Free WiFi','Shared toilet','Garden view','Budget option'],
+     bathroom:['Shared toilet','Towels available'],
+     view:['Garden view'],
+     facilities:['Socket near bed','Fan','Wake-up service','Clothes rack','Free WiFi'],
+     smoking:'No smoking',
+     images:['/images/courtyard-breakfast.png','/images/courtyard-flags.png','/images/exterior.png']}
+  ];
+
+  let _rdRoom=null,_rdIdx=0;
+
+  function _rdRender(room,idx){
+    _rdIdx=idx;
+    const img=document.getElementById('rdMainImg');
+    img.src=room.images[idx]; img.alt=room.name+' photo '+(idx+1);
+    document.getElementById('rdCounter').textContent=(idx+1)+' / '+room.images.length;
+    const thumbs=document.getElementById('rdThumbs');
+    thumbs.innerHTML=room.images.map((s,i)=>
+      `<img src="${s}" class="rd-thumb${i===idx?' active':''}" data-i="${i}" alt="photo ${i+1}">`
+    ).join('');
+    thumbs.querySelectorAll('.rd-thumb').forEach(t=>{
+      t.addEventListener('click',()=>_rdRender(room,+t.dataset.i));
+    });
+  }
+
+  function openRoomModal(id){
+    const room=ROOMS.find(r=>r.id===id); if(!room) return;
+    _rdRoom=room; _rdIdx=0;
+    document.getElementById('rdLabel').textContent=room.num+' — '+room.label;
+    document.getElementById('rdCatBadge').textContent='Room '+room.num;
+    document.getElementById('rdTitle').textContent=room.name;
+    document.getElementById('rdSubtitle').textContent=room.subtitle;
+    document.getElementById('rdTags').innerHTML=room.tags.map(t=>`<span class="rd-tag">${t}</span>`).join('');
+    document.getElementById('rdStats').innerHTML=
+      `<div class="rd-stat-cell"><strong>${room.size}</strong><span>Room size</span></div>`+
+      `<div class="rd-stat-cell"><strong>${room.guests}</strong><span>Guest${room.guests>1?'s':''}</span></div>`+
+      `<div class="rd-stat-cell"><strong style="font-size:15px;line-height:1.3">${room.beds}</strong><span>Bed type</span></div>`;
+    document.getElementById('rdScoreRow').innerHTML=
+      `<div class="rd-score-pill">${room.score}</div>`+
+      `<div class="rd-score-info"><b>Comfy beds score</b>Based on ${room.reviews} verified Booking.com reviews</div>`;
+    document.getElementById('rdDesc').textContent=room.desc;
+    function sec(elId,title,items){
+      const el=document.getElementById(elId);
+      if(!items||!items.length){el.style.display='none';return;}
+      el.style.display='';
+      el.innerHTML=`<div class="rd-sec-heading">${title}</div><ul class="rd-list">${items.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+    }
+    sec('rdBathSec','In your bathroom',room.bathroom);
+    sec('rdViewSec','Views',room.view);
+    sec('rdFacSec','Facilities',room.facilities);
+    document.getElementById('rdSmoke').innerHTML=
+      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>&ensp;Smoking: ${room.smoking}`;
+    document.getElementById('rdBookBtn').onclick=()=>closeRoomModal();
+    _rdRender(room,0);
+    document.getElementById('rdOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+    document.getElementById('rdClose').focus();
+  }
+
+  function closeRoomModal(){
+    document.getElementById('rdOverlay').classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  document.getElementById('rdClose').addEventListener('click',closeRoomModal);
+  document.getElementById('rdOverlay').addEventListener('click',e=>{
+    if(e.target===document.getElementById('rdOverlay')) closeRoomModal();
+  });
+  document.getElementById('rdPrev').addEventListener('click',()=>{
+    if(!_rdRoom) return;
+    _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
+  });
+  document.getElementById('rdNext').addEventListener('click',()=>{
+    if(!_rdRoom) return;
+    _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
+  });
+  document.addEventListener('keydown',e=>{
+    if(!document.getElementById('rdOverlay').classList.contains('open')) return;
+    if(e.key==='Escape') closeRoomModal();
+    if(e.key==='ArrowLeft'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
+    if(e.key==='ArrowRight'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
+  });
+
+  // Wire up all "View Details" buttons
+  document.querySelectorAll('.view-room-btn').forEach(btn=>{
+    btn.addEventListener('click',e=>{
+      e.preventDefault();
+      const parent=e.currentTarget.closest('[data-room]');
+      if(parent) openRoomModal(+parent.dataset.room);
+    });
+  });
 </script>
+<!-- Room Detail Modal -->
+<div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
+  <div class="rd-modal">
+    <div class="rd-gallery">
+      <div class="rd-main-img">
+        <img id="rdMainImg" src="" alt="">
+        <button class="rd-nav-btn rd-nav-prev" id="rdPrev" aria-label="Previous image">&#8249;</button>
+        <button class="rd-nav-btn rd-nav-next" id="rdNext" aria-label="Next image">&#8250;</button>
+        <span class="rd-img-counter" id="rdCounter">1 / 3</span>
+        <span class="rd-cat-badge" id="rdCatBadge"></span>
+      </div>
+      <div class="rd-thumbs" id="rdThumbs"></div>
+    </div>
+    <div class="rd-details">
+      <div class="rd-top-bar">
+        <span class="rd-room-label" id="rdLabel"></span>
+        <button class="rd-close-btn" id="rdClose" aria-label="Close modal">&#10005;</button>
+      </div>
+      <div class="rd-scroll">
+        <div style="padding-top:16px">
+          <h2 class="rd-title" id="rdTitle"></h2>
+          <p class="rd-subtitle" id="rdSubtitle"></p>
+          <div class="rd-tags" id="rdTags"></div>
+          <div class="rd-stats" id="rdStats"></div>
+          <div class="rd-score-row" id="rdScoreRow"></div>
+          <p class="rd-desc" id="rdDesc"></p>
+          <div class="rd-section" id="rdBathSec"></div>
+          <div class="rd-section" id="rdViewSec"></div>
+          <div class="rd-section" id="rdFacSec"></div>
+          <div class="rd-no-smoke" id="rdSmoke"></div>
+        </div>
+      </div>
+      <div class="rd-cta-bar">
+        <a href="#booking" class="rd-book-btn" id="rdBookBtn">Check Availability →</a>
+        <div class="rd-bcom">or <a href="https://www.booking.com/hotel/np/kathmandu-family-house.en-gb.html" target="_blank" rel="noopener">Booking.com</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
