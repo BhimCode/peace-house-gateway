@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Family Peace House — Guesthouse & B&B in Thamel, Kathmandu</title>
+<meta name="description" content="Family Peace House Pvt. Ltd. — a peaceful family-run guesthouse in the heart of Thamel, Kathmandu. Warm Nepali hospitality, clean rooms, and a rooftop garden." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Georgia&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Reset & base ---------- */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;line-height:1.6;background:#fff;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  :root{
+    --accent:#E8683A;
+    --accent-dark:#c8541f;
+    --dark:#1a1a1a;
+    --text:#333;
+    --muted:#777;
+    --maxw:1100px;
+  }
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  section{padding:80px 0}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:var(--dark);font-weight:600}
+
+  /* ---------- Navigation ---------- */
+  .nav{position:fixed;top:0;left:0;right:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1000}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Dancing Script',cursive;font-size:28px;color:var(--accent);font-weight:700;white-space:nowrap}
+  .nav-links{display:flex;gap:32px;list-style:none}
+  .nav-links a{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--dark);padding:6px 0;border-bottom:2px solid transparent;transition:.25s}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--accent)}
+  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
+  .hamburger span{width:24px;height:2px;background:var(--dark);transition:.3s}
+
+  /* ---------- Hero ---------- */
+  .hero{position:relative;min-height:560px;margin-top:62px;background:
+    linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.35)),
+    url('https://picsum.photos/seed/thamel-rooftop/1600/700') center/cover no-repeat;
+    display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
+  .hero-content{padding:40px 20px 200px}
+  .hero h1{color:#fff;font-size:clamp(36px,5vw,58px);letter-spacing:1px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+  .hero p{font-size:18px;margin-top:14px;opacity:.95}
+
+  /* Booking bar */
+  .booking{position:absolute;left:50%;bottom:-50px;transform:translateX(-50%);width:min(1100px,95%);
+    background:rgba(20,20,20,.88);backdrop-filter:blur(6px);padding:22px;border-radius:6px;
+    box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .booking-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+  .booking label{display:block;color:#cfcfcf;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .booking input,.booking select{width:100%;padding:10px;border:none;border-radius:3px;background:#fff;color:#333;font-size:14px;font-family:inherit}
+  .booking .btn-check{grid-column:span 6;background:var(--accent);color:#fff;font-weight:700;
+    text-transform:uppercase;letter-spacing:1.5px;padding:14px;border-radius:3px;font-size:13px;
+    transition:.25s;margin-top:6px}
+  .booking .btn-check:hover{background:var(--accent-dark)}
+
+  /* ---------- Welcome ---------- */
+  .welcome{padding-top:140px;text-align:center}
+  .welcome .accent{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;display:block}
+  .welcome h2{font-size:36px;margin-bottom:24px;font-style:italic;font-weight:400}
+  .welcome p{max-width:760px;margin:0 auto;color:#555;font-size:16px}
+  .divider{width:50px;height:3px;background:var(--accent);margin:20px auto 28px}
+
+  /* ---------- Gallery ---------- */
+  .gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:20px}
+  .gallery-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px}
+  .gimg{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;min-height:180px}
+  .gimg.large{min-height:380px}
+  .gimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .gimg:hover img{transform:scale(1.08)}
+  .gimg .label{position:absolute;inset:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-size:22px;letter-spacing:1px;opacity:0;transition:.35s}
+  .gimg:hover .label{opacity:1}
+
+  /* ---------- Rooms ---------- */
+  .rooms{background:#faf7f3}
+  .section-title{text-align:center;margin-bottom:50px}
+  .section-title .accent{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:10px}
+  .section-title h2{font-size:34px;font-style:italic;font-weight:400}
+  .room{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-bottom:70px}
+  .room:last-child{margin-bottom:0}
+  .room.reverse .room-img{order:2}
+  .room-img{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.12)}
+  .room-img img{width:100%;height:340px;object-fit:cover}
+  .price-badge{position:absolute;top:20px;left:0;background:var(--accent);color:#fff;
+    padding:10px 18px;font-weight:700;font-size:14px;letter-spacing:.5px;border-radius:0 3px 3px 0;
+    box-shadow:0 4px 10px rgba(0,0,0,.2)}
+  .room-info h3{font-size:28px;margin-bottom:14px;font-style:italic;font-weight:500}
+  .room-info p{color:#666;margin-bottom:20px}
+  .amenities{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px;padding:16px 0;border-top:1px solid #e5dfd6;border-bottom:1px solid #e5dfd6}
+  .amenities span{font-size:13px;color:#555;display:inline-flex;align-items:center;gap:6px}
+  .amenities span em{font-style:normal;font-size:18px}
+  .btn-outline{display:inline-block;padding:11px 28px;border:2px solid var(--accent);color:var(--accent);
+    font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:1.5px;border-radius:2px;transition:.25s}
+  .btn-outline:hover{background:var(--accent);color:#fff}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{position:relative;background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),
+    url('https://picsum.photos/seed/peace-pool/1600/600') center/cover no-repeat fixed;
+    color:#fff;text-align:center}
+  .testimonials .section-title h2{color:#fff}
+  .t-track{position:relative;max-width:760px;margin:0 auto;min-height:240px}
+  .t-card{position:absolute;inset:0;opacity:0;transition:opacity .6s;display:flex;flex-direction:column;align-items:center;padding:0 20px}
+  .t-card.active{opacity:1;position:relative}
+  .t-avatar{width:70px;height:70px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);margin-bottom:18px}
+  .t-avatar img{width:100%;height:100%;object-fit:cover}
+  .t-text{font-size:18px;font-style:italic;line-height:1.7;max-width:680px;margin-bottom:18px;opacity:.95}
+  .t-name{font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-size:13px}
+  .t-date{font-size:12px;opacity:.7;margin-top:4px}
+  .dots{display:flex;gap:10px;justify-content:center;margin-top:30px}
+  .dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:.25s}
+  .dot.active{background:var(--accent);transform:scale(1.2)}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--dark);color:#bbb;padding:70px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:50px}
+  .foot-col h4{color:#fff;font-family:Georgia,serif;font-size:18px;margin-bottom:20px;letter-spacing:.5px}
+  .foot-col p,.foot-col a{font-size:14px;color:#bbb;line-height:1.9}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-col ul{list-style:none}
+  .foot-logo{font-family:'Dancing Script',cursive;color:var(--accent);font-size:26px;margin-bottom:16px;display:block}
+  .news-form{display:flex;margin-top:14px}
+  .news-form input{flex:1;padding:11px;border:none;background:#2a2a2a;color:#fff;border-radius:2px 0 0 2px;font-family:inherit}
+  .news-form button{background:var(--accent);color:#fff;padding:0 20px;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:1px;border-radius:0 2px 2px 0;transition:.25s}
+  .news-form button:hover{background:var(--accent-dark)}
+  .socials{margin-top:18px;display:flex;gap:14px;font-size:20px}
+  .socials a{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;background:#2a2a2a;border-radius:50%;transition:.25s}
+  .socials a:hover{background:var(--accent);color:#fff}
+  .foot-bottom{border-top:1px solid #2a2a2a;margin-top:50px;padding:22px 0;text-align:center;font-size:13px;color:#888}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:900px){
+    .booking-grid{grid-template-columns:repeat(2,1fr)}
+    .booking .btn-check{grid-column:span 2}
+    .gallery{grid-template-columns:1fr}
+    .room,.room.reverse{grid-template-columns:1fr;gap:25px}
+    .room.reverse .room-img{order:0}
+    .room-img img{height:260px}
+    .foot-grid{grid-template-columns:1fr;gap:35px}
+  }
+  @media(max-width:720px){
+    .hamburger{display:flex}
+    .nav-links{position:absolute;top:100%;right:0;background:#fff;flex-direction:column;padding:20px 30px;gap:18px;
+      box-shadow:0 10px 20px rgba(0,0,0,.1);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s}
+    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
+    .hero{min-height:480px}
+    .welcome{padding-top:200px}
+    section{padding:60px 0}
+  }
+  @media(max-width:480px){
+    .booking-grid{grid-template-columns:1fr}
+    .booking .btn-check{grid-column:span 1}
+    .welcome{padding-top:280px}
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">Family Peace House</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<header class="hero" id="home">
+  <div class="hero-content">
+    <h1>Welcome Home in Thamel</h1>
+    <p>Peaceful stays in the heart of Kathmandu</p>
+  </div>
+  <form class="booking" id="bookingForm" novalidate>
+    <div class="booking-grid">
+      <div><label>Arrival</label><input type="date" name="arrival" required></div>
+      <div><label>Departure</label><input type="date" name="departure" required></div>
+      <div><label>Adults</label>
+        <select name="adults"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+      </div>
+      <div><label>Children</label>
+        <select name="children"><option selected>0</option><option>1</option><option>2</option><option>3</option></select>
+      </div>
+      <div><label>Name &amp; Last Name</label><input type="text" name="name" placeholder="Your name" required></div>
+      <div><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
+      <button type="submit" class="btn-check">Check Availability</button>
+    </div>
+  </form>
+</header>
+
+<!-- Welcome -->
+<section class="welcome">
+  <div class="container">
+    <span class="accent">Welcome to Family Peace House</span>
+    <h2>Guesthouse &amp; Bed and Breakfast</h2>
+    <div class="divider"></div>
+    <p>Nestled in a quiet pedestrian lane in the heart of Thamel, Family Peace House offers a peaceful retreat from the city's buzz. Managed personally by our owner Bimal and his team, we provide warm Nepali hospitality, clean comfortable rooms, and everything you need to explore Kathmandu with ease.</p>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" style="padding-top:0">
+  <div class="container">
+    <div class="gallery">
+      <div class="gimg large"><img src="https://picsum.photos/seed/peace-rooftop/800/800" alt="Rooftop garden"><div class="label">Rooftop Garden</div></div>
+      <div class="gallery-right">
+        <div class="gimg" style="grid-column:span 2"><img src="https://picsum.photos/seed/peace-room/800/400" alt="Comfortable Rooms"><div class="label">Comfortable Rooms</div></div>
+        <div class="gimg"><img src="https://picsum.photos/seed/peace-bath/500/400" alt="Clean Bathrooms"><div class="label">Clean Bathrooms</div></div>
+        <div class="gimg"><img src="https://picsum.photos/seed/peace-common/500/400" alt="Cozy Common Area"><div class="label">Cozy Common Area</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-title">
+      <span class="accent">Our Rooms</span>
+      <h2>Comfortable Stays for Every Traveler</h2>
+    </div>
+
+    <div class="room">
+      <div class="room-img">
+        <img src="https://picsum.photos/seed/peace-standard/700/500" alt="Standard Room">
+        <span class="price-badge">NPR 800 / Per night</span>
+      </div>
+      <div class="room-info">
+        <h3>Standard Room</h3>
+        <p>Cozy and clean room perfect for solo travelers or couples. Features a comfortable bed, hot shower, and free WiFi.</p>
+        <div class="amenities">
+          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+        </div>
+        <a href="#" class="btn-outline">Read more</a>
+      </div>
+    </div>
+
+    <div class="room reverse">
+      <div class="room-img">
+        <img src="https://picsum.photos/seed/peace-deluxe/700/500" alt="Deluxe Room">
+        <span class="price-badge">NPR 1,500 / Per night</span>
+      </div>
+      <div class="room-info">
+        <h3>Deluxe Room</h3>
+        <p>Spacious deluxe room with mountain views, en-suite bathroom, and premium bedding. Ideal for couples wanting extra comfort.</p>
+        <div class="amenities">
+          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+        </div>
+        <a href="#" class="btn-outline">Read more</a>
+      </div>
+    </div>
+
+    <div class="room">
+      <div class="room-img">
+        <img src="https://picsum.photos/seed/peace-family/700/500" alt="Family Room">
+        <span class="price-badge">NPR 2,200 / Per night</span>
+      </div>
+      <div class="room-info">
+        <h3>Family Room</h3>
+        <p>Our largest room, perfect for families or small groups. Fits up to 4 guests with extra beds available on request.</p>
+        <div class="amenities">
+          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+        </div>
+        <a href="#" class="btn-outline">Read more</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title">
+      <span class="accent" style="color:var(--accent)">Testimonials</span>
+      <h2>What Our Guests Say</h2>
+    </div>
+    <div class="t-track" id="tTrack">
+      <div class="t-card active">
+        <div class="t-avatar"><img src="https://picsum.photos/seed/sarah/100" alt="Sarah"></div>
+        <p class="t-text">"Family Peace House is a peaceful and quiet place near Thamel. The owner Bimal is friendly and helpful — he organized a day hike and mountain flight for us. Highly recommended for young travelers!"</p>
+        <div class="t-name">Sarah M.</div><div class="t-date">March 2024</div>
+      </div>
+      <div class="t-card">
+        <div class="t-avatar"><img src="https://picsum.photos/seed/marco/100" alt="Marco"></div>
+        <p class="t-text">"The guesthouse is in a quiet pedestrian street. There are open-air shared areas where you can relax and chat with other guests. I finally called it home!"</p>
+        <div class="t-name">Marco R.</div><div class="t-date">January 2024</div>
+      </div>
+      <div class="t-card">
+        <div class="t-avatar"><img src="https://picsum.photos/seed/aisha/100" alt="Aisha"></div>
+        <p class="t-text">"Great hospitality. Made many great friends here. Budget friendly and perfect for solo travelers. Must visit!"</p>
+        <div class="t-name">Aisha K.</div><div class="t-date">April 2024</div>
+      </div>
+    </div>
+    <div class="dots" id="dots">
+      <span class="dot active" data-i="0"></span>
+      <span class="dot" data-i="1"></span>
+      <span class="dot" data-i="2"></span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <span class="foot-logo">Family Peace House</span>
+        <p><strong style="color:#fff">Family Peace House Pvt. Ltd.</strong><br>
+        Thamel, Kathmandu 44600, Nepal<br>
+        +977 1-4981138<br>
+        familypeacehouse@gmail.com</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="TripAdvisor">✈</a>
+          <a href="#" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">About Us</a></li>
+          <li><a href="#rooms">Rooms</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#">Activities</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Newsletter</h4>
+        <p>Subscribe to receive travel tips and special offers.</p>
+        <form class="news-form" id="newsForm">
+          <input type="email" placeholder="Your email" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2025 Family Peace House. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger
+  const hb=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
+  hb.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+  // Active nav on scroll
+  const sections=['home','rooms','gallery','contact'].map(id=>document.getElementById(id));
+  const links=document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY+120;
+    let cur='home';
+    sections.forEach(s=>{ if(s && s.offsetTop<=y) cur=s.id; });
+    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+  });
+
+  // Booking form
+  document.getElementById('bookingForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f=e.target,d=new FormData(f);
+    if(!d.get('arrival')||!d.get('departure')||!d.get('name')||!d.get('email')){
+      alert('Please fill in all required fields.');return;
+    }
+    if(new Date(d.get('departure'))<=new Date(d.get('arrival'))){
+      alert('Departure date must be after arrival date.');return;
+    }
+    alert('Thank you! We will confirm your booking within 24 hours.');
+    f.reset();
+  });
+
+  // Newsletter
+  document.getElementById('newsForm').addEventListener('submit',e=>{
+    e.preventDefault();
+    alert('Thanks for subscribing!');
+    e.target.reset();
+  });
+
+  // Testimonials carousel
+  const cards=document.querySelectorAll('.t-card'),dots=document.querySelectorAll('.dot');
+  let idx=0;
+  function show(i){
+    cards.forEach((c,n)=>c.classList.toggle('active',n===i));
+    dots.forEach((d,n)=>d.classList.toggle('active',n===i));
+    idx=i;
+  }
+  dots.forEach(d=>d.addEventListener('click',()=>show(+d.dataset.i)));
+  setInterval(()=>show((idx+1)%cards.length),6000);
+</script>
+</body>
+</html>
