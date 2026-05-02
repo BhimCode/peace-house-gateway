@@ -18,3 +18,9 @@ id = "zBo3Fn-W9KNsELdF_8EAX"
 uri = "file://artifacts/family-peace-house-video/public/images/warm-texture.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "ZZp1OmEf_Kx1rnVSWm1Dx"
+uri = "file://artifacts/family-peace-mobile/assets/images/icon.png"
+type = "image"
+title = "generated_image"
