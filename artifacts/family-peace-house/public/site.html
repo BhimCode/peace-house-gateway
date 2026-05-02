@@ -127,6 +127,12 @@
   .booking .btn-check{background:var(--accent);color:#fff;font-weight:700;text-transform:uppercase;
     letter-spacing:1.5px;padding:14px 28px;border-radius:4px;font-size:12px;transition:.3s;white-space:nowrap}
   .booking .btn-check:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 10px 25px rgba(232,104,58,.35)}
+  .booking .btn-check:disabled{opacity:.65;cursor:not-allowed;transform:none;box-shadow:none}
+  .booking-msg{position:absolute;left:0;right:0;bottom:-130px;margin:0 auto;width:min(1100px,94%);
+    padding:16px 24px;border-radius:8px;font-size:13.5px;line-height:1.6;animation:fadeUp .4s ease both}
+  .booking-msg--success{background:#f0fdf4;border:1px solid #86efac;color:#166534}
+  .booking-msg--error{background:#fff1f2;border:1px solid #fca5a5;color:#991b1b}
+  .booking-msg a{color:inherit;font-weight:600;text-decoration:underline}
 
   /* ---------- Marquee features ---------- */
   .marquee{margin-top:80px;padding:24px 0;background:var(--dark);color:#fff;overflow:hidden;border-top:1px solid rgba(255,255,255,.05)}
@@ -683,18 +689,62 @@
   });
 
   // Booking form
-  document.getElementById('booking').addEventListener('submit',e=>{
-    e.preventDefault();
-    const f=e.target,d=new FormData(f);
-    if(!d.get('arrival')||!d.get('departure')||!d.get('email')){
-      alert('Please fill in all required fields.');return;
+  (function(){
+    const form=document.getElementById('booking');
+    const btn=form.querySelector('.btn-check');
+
+    function showMsg(type,html){
+      let el=document.getElementById('booking-msg');
+      if(!el){
+        el=document.createElement('div');
+        el.id='booking-msg';
+        form.appendChild(el);
+      }
+      el.className='booking-msg booking-msg--'+type;
+      el.innerHTML=html;
     }
-    if(new Date(d.get('departure'))<=new Date(d.get('arrival'))){
-      alert('Departure date must be after arrival date.');return;
-    }
-    alert('Thank you! We will confirm your booking within 24 hours.');
-    f.reset();
-  });
+
+    form.addEventListener('submit',async function(e){
+      e.preventDefault();
+      const d=new FormData(form);
+      const arrival=d.get('arrival'),departure=d.get('departure'),email=d.get('email');
+      if(!arrival||!departure||!email){
+        showMsg('error','Please fill in arrival date, departure date, and your email.');return;
+      }
+      if(new Date(departure)<=new Date(arrival)){
+        showMsg('error','Departure date must be after arrival date.');return;
+      }
+      btn.disabled=true;
+      btn.textContent='Sending…';
+      try{
+        const resp=await fetch('/api/booking',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({
+            arrival,departure,
+            adults:d.get('adults')||'2',
+            children:d.get('children')||'0',
+            email
+          })
+        });
+        const data=await resp.json().catch(()=>({}));
+        if(resp.ok){
+          form.reset();
+          showMsg('success',
+            '<strong>Request sent!</strong> We\'ll confirm within 24 hours — check your inbox at <em>'+email+'</em>.<br>'
+            +'Want instant confirmation? <a href="https://www.booking.com/searchresults.html?ss=Family+Peace+House+Thamel+Kathmandu&checkin='+arrival+'&checkout='+departure+'" target="_blank" rel="noopener">Check availability on Booking.com \u2192</a>'
+          );
+        } else {
+          showMsg('error',data.error||'Something went wrong. Please try again or call us at <a href="tel:+97714981138">+977\u00a01-4981138</a>.');
+        }
+      } catch(_){
+        showMsg('error','Could not connect. Please call <a href="tel:+97714981138">+977\u00a01-4981138</a> or try again.');
+      } finally {
+        btn.disabled=false;
+        btn.textContent='Check Availability';
+      }
+    });
+  })();
 
   // Newsletter
   document.getElementById('newsForm').addEventListener('submit',e=>{
