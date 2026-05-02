@@ -208,22 +208,22 @@ export const staggerConfigs = {
 } as const;
 
 // Common variants
-export const containerVariants: Variants = {
+export const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: staggerConfigs.medium,
   },
-};
+} as Variants;
 
-export const itemVariants: Variants = {
+export const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: { duration: 0.5, ease: 'circOut' },
   },
-};
+} as Variants;
 
 // Utilities
 export function staggerDelay(index: number, baseDelay: number = 0.1): number {
