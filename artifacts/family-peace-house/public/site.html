@@ -259,6 +259,17 @@
   .map-card-body p,.map-card-body a{font-size:13.5px;color:var(--muted);line-height:1.7;transition:.3s}
   .map-card-body a:hover{color:var(--accent)}
 
+  /* ---------- Budget Rooms ---------- */
+  .budget-rooms{margin-top:80px;padding-top:60px;border-top:1px solid #e5dfd6}
+  .budget-label{margin-bottom:36px}
+  .budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .budget-card{background:#fff;border-radius:12px;overflow:hidden;border:1px solid #ede8e0;box-shadow:var(--shadow-sm);transition:.3s;display:flex;flex-direction:column}
+  .budget-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px)}
+  .budget-card img{width:100%;height:220px;object-fit:cover}
+  .budget-body{padding:24px 28px;flex:1;display:flex;flex-direction:column}
+  .budget-body h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--dark);line-height:1.3;margin-bottom:0}
+  .budget-body h4 span{display:block;font-size:15px;font-style:italic;color:var(--muted);font-weight:400;margin-top:3px}
+
   /* ---------- Guest Ratings ---------- */
   .ratings{background:var(--warm);padding:100px 0}
   .rating-hero{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:52px}
@@ -354,6 +365,7 @@
     .fac-grid{grid-template-columns:repeat(2,1fr);gap:36px 40px}
     .nearby-grid{grid-template-columns:1fr}
     .rules-grid{grid-template-columns:1fr}
+    .budget-grid{grid-template-columns:1fr}
   }
   @media(max-width:720px){
     section{padding:80px 0}
@@ -489,65 +501,117 @@
       <h2 class="reveal delay-1">Comfortable stays for <em>every traveler</em></h2>
     </div>
 
+    <!-- 01 Single Private -->
     <div class="room">
       <div class="room-img-wrap reveal-l">
         <span class="room-deco"></span>
         <div class="room-img">
-          <img src="/images/room-twin.png" alt="Standard Room">
-          <span class="price-badge">NPR 800 / night</span>
+          <img src="/images/room-twin.png" alt="Single Room with Private Bathroom">
+          <span class="price-badge">1 Guest</span>
         </div>
       </div>
       <div class="room-info reveal-r">
-        <span class="eyebrow">01 — Standard</span>
-        <h3>Standard Room</h3>
-        <p>Cozy and spotless room perfect for solo travelers or couples. Comfortable bed, hot shower, plenty of natural light, and free WiFi to keep you connected.</p>
+        <span class="eyebrow">01 — Solo Traveller</span>
+        <h3>Single Room <em style="font-style:italic;color:var(--accent);font-size:.75em;display:block;font-weight:400;margin-top:2px">with Private Bathroom</em></h3>
+        <p>A cosy, quiet room ideal for solo travellers. Features a single bed, private en-suite bathroom, free WiFi, work desk, and garden or terrace views.</p>
         <div class="amenities">
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> Twin / Double bed</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Fast WiFi</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> Hot Shower</span>
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></em> Luggage Storage</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 12a5 5 0 0 0-10 0"/><path d="M12 2v2M4.22 4.22l1.42 1.42M2 12h2M20 12h2M19.78 4.22l-1.42 1.42"/><line x1="2" y1="17" x2="22" y2="17"/></svg></em> Natural light</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 1 single bed</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> Private bathroom</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></em> Work desk</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></em> Garden or terrace view</span>
         </div>
         <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
       </div>
     </div>
 
+    <!-- 02 Double Private -->
     <div class="room reverse">
       <div class="room-img-wrap reveal-r">
         <span class="room-deco"></span>
         <div class="room-img">
-          <img src="/images/exterior.png" alt="Deluxe Room">
-          <span class="price-badge">NPR 1,500 / night</span>
+          <img src="/images/exterior.png" alt="Double Room with Private Bathroom">
+          <span class="price-badge">2 Guests</span>
         </div>
       </div>
       <div class="room-info reveal-l">
-        <span class="eyebrow">02 — Deluxe</span>
-        <h3>Deluxe Room</h3>
-        <p>Spacious deluxe room with views over Thamel rooftops, en-suite bathroom, and premium bedding. Ideal for couples wanting a little extra comfort.</p>
+        <span class="eyebrow">02 — Couples</span>
+        <h3>Double Room <em style="font-style:italic;color:var(--accent);font-size:.75em;display:block;font-weight:400;margin-top:2px">with Private Bathroom</em></h3>
+        <p>A spacious double room with an extra-large double bed and private en-suite bathroom. Includes free toiletries, work desk, soundproofing, and garden or terrace views.</p>
         <div class="amenities">
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> Queen bed</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Fast WiFi</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> En-suite</span>
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></em> Rooftop view</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></em> Premium bedding</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 1 extra-large double bed</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> Private bathroom</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></em> Soundproofing</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></em> Free toiletries</span>
         </div>
         <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
       </div>
     </div>
 
+    <!-- 03 Triple Private -->
     <div class="room">
       <div class="room-img-wrap reveal-l">
         <span class="room-deco"></span>
         <div class="room-img">
-          <img src="/images/room-family.png" alt="Family Room">
-          <span class="price-badge">NPR 2,200 / night</span>
+          <img src="/images/room-family.png" alt="Triple Room with Private Bathroom">
+          <span class="price-badge">3 Guests</span>
         </div>
       </div>
       <div class="room-info reveal-r">
-        <span class="eyebrow">03 — Family</span>
-        <h3>Family Room</h3>
-        <p>Our largest, most colorful room — perfect for families or small groups of friends. Comfortably fits up to four guests, with extra beds available on request.</p>
+        <span class="eyebrow">03 — Groups & Families</span>
+        <h3>Triple Room <em style="font-style:italic;color:var(--accent);font-size:.75em;display:block;font-weight:400;margin-top:2px">with Private Bathroom</em></h3>
+        <p>Our most spacious room — perfect for families or small groups. Three single beds, private bathroom, and all the comforts of home in the heart of Thamel.</p>
         <div class="amenities">
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 3–4 beds</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Fast WiFi</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> Hot Shower</span>
-          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></em> Family friendly</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span><span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></em> Extra space</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 3 single beds</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg></em> Private bathroom</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></em> Sleeps 3</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
+          <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg></em> Garden or terrace view</span>
         </div>
         <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
       </div>
     </div>
+
+    <!-- 04 & 05 Budget rooms — shared facilities -->
+    <div class="budget-rooms reveal delay-1">
+      <div class="budget-label">
+        <span class="eyebrow" style="justify-content:flex-start">Budget Options — Shared Facilities</span>
+        <p style="font-size:14px;color:var(--muted);margin-top:6px">Same warm hospitality and free WiFi — shared shower &amp; toilet for solo travellers and couples on a budget.</p>
+      </div>
+      <div class="budget-grid">
+        <div class="budget-card">
+          <img src="/images/courtyard-flags.png" alt="Single Room with Shared Shower and Toilet">
+          <div class="budget-body">
+            <span class="eyebrow" style="font-size:10px;justify-content:flex-start">04 — Solo Budget</span>
+            <h4>Single Room <span>with Shared Shower &amp; Toilet</span></h4>
+            <ul class="amenities" style="margin:14px 0 0">
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 1 single bed</span>
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
+            </ul>
+            <a href="#booking" class="btn-outline" style="margin-top:20px;font-size:12px;padding:10px 20px">Book <span>→</span></a>
+          </div>
+        </div>
+        <div class="budget-card">
+          <img src="/images/courtyard-breakfast.png" alt="Double Room with Shared Toilet">
+          <div class="budget-body">
+            <span class="eyebrow" style="font-size:10px;justify-content:flex-start">05 — Budget Couple</span>
+            <h4>Double Room <span>with Shared Toilet</span></h4>
+            <ul class="amenities" style="margin:14px 0 0">
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M3 7v10M21 7v10M3 12h18"/><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2"/><path d="M9 12V9a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg></em> 1 extra-large double bed</span>
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></em> Free WiFi</span>
+              <span><em><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="1em" height="1em" style="vertical-align:-0.15em"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></em> Breakfast included</span>
+            </ul>
+            <a href="#booking" class="btn-outline" style="margin-top:20px;font-size:12px;padding:10px 20px">Book <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
