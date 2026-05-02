@@ -1,0 +1,20 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "Wph6_GYIsbvdD-tt8EOcx"
+uri = "file://artifacts/family-peace-house-video/public/images/himalaya-bg.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "UU_IlCtnq26mhmQX6_LQV"
+uri = "file://artifacts/family-peace-house-video/public/images/prayer-flags-texture.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "zBo3Fn-W9KNsELdF_8EAX"
+uri = "file://artifacts/family-peace-house-video/public/images/warm-texture.png"
+type = "image"
+title = "generated_image"
