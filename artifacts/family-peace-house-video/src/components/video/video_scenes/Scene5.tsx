@@ -187,15 +187,15 @@ export function Scene5() {
       </div>
 
       {/* Floating ambient circles */}
-      {[
-        { w: 280, h: 280, top: '5%', left: '-8%', color: 'rgba(232,104,58,0.06)', dur: 7 },
-        { w: 200, h: 200, top: '60%', right: '-5%', color: 'rgba(201,169,97,0.07)', dur: 9 },
-        { w: 150, h: 150, top: '40%', left: '5%', color: 'rgba(45,106,106,0.06)', dur: 5 },
-      ].map((c, i) => (
+      {([
+        { w: 280, h: 280, top: '5%', left: '-8%', right: undefined, color: 'rgba(232,104,58,0.06)', dur: 7 },
+        { w: 200, h: 200, top: '60%', left: undefined, right: '-5%', color: 'rgba(201,169,97,0.07)', dur: 9 },
+        { w: 150, h: 150, top: '40%', left: '5%', right: undefined, color: 'rgba(45,106,106,0.06)', dur: 5 },
+      ] as Array<{ w: number; h: number; top: string; left: string | undefined; right: string | undefined; color: string; dur: number }>).map((c, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full blur-2xl"
-          style={{ width: c.w, height: c.h, top: c.top, left: c.left, right: (c as any).right, background: c.color }}
+          style={{ width: c.w, height: c.h, top: c.top, left: c.left, right: c.right, background: c.color }}
           animate={{ scale: [1, 1.2, 1], x: [0, 15, 0], y: [0, -10, 0] }}
           transition={{ duration: c.dur, repeat: Infinity, ease: 'easeInOut', delay: i * 1.5 }}
         />
