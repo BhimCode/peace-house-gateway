@@ -1,0 +1,66 @@
+[
+  {
+    "id": "a1b2c3d4-0001-4abc-8def-000000000001",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide1Cover.tsx",
+    "title": "Cover",
+    "description": "Title slide with prayer-flag courtyard hero image",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0002-4abc-8def-000000000002",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide2Story.tsx",
+    "title": "Our Story",
+    "description": "Split layout: guesthouse exterior photo with story copy and Bimal's signature",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0003-4abc-8def-000000000003",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide3Numbers.tsx",
+    "title": "By the Numbers",
+    "description": "Dark slide with four key stats: 15 years, 2400+ guests, 48 countries, 4.9 rating",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0004-4abc-8def-000000000004",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide4Spaces.tsx",
+    "title": "Our Spaces",
+    "description": "Full-bleed courtyard breakfast photo with overlay text",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0005-4abc-8def-000000000005",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide5Rooms.tsx",
+    "title": "Room Options",
+    "description": "Three-column room overview: Standard, Deluxe, and Family rooms with pricing",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0006-4abc-8def-000000000006",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide6Experience.tsx",
+    "title": "The Experience",
+    "description": "Four guest experiences: Daily Breakfast, Trek Planning, Airport Pickup, Local Tours",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0007-4abc-8def-000000000007",
+    "position": 7,
+    "filepath": "src/pages/slides/Slide7Voices.tsx",
+    "title": "Guest Voices",
+    "description": "Pull-quote testimonial over courtyard photo with dark overlay",
+    "speakerNotes": ""
+  },
+  {
+    "id": "a1b2c3d4-0008-4abc-8def-000000000008",
+    "position": 8,
+    "filepath": "src/pages/slides/Slide8Reserve.tsx",
+    "title": "Reserve Your Stay",
+    "description": "Closing slide with contact details on dark charcoal background",
+    "speakerNotes": ""
+  }
+]

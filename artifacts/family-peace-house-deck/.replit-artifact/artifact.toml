@@ -1,0 +1,31 @@
+kind = "slides"
+previewPath = "/family-peace-house-deck/"
+title = "Family Peace House Pitch Deck"
+version = "1.0.0"
+id = "artifacts/family-peace-house-deck"
+router = "path"
+
+[[integratedSkills]]
+name = "slides"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/family-peace-house-deck/" ]
+localPort = 22669
+
+[services.development]
+run = "pnpm --filter @workspace/family-peace-house-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/family-peace-house-deck", "run", "build" ]
+publicDir = "artifacts/family-peace-house-deck/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22669"
+BASE_PATH = "/family-peace-house-deck/"
