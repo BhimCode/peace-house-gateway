@@ -259,6 +259,53 @@
   .map-card-body p,.map-card-body a{font-size:13.5px;color:var(--muted);line-height:1.7;transition:.3s}
   .map-card-body a:hover{color:var(--accent)}
 
+  /* ---------- Guest Ratings ---------- */
+  .ratings{background:var(--warm);padding:100px 0}
+  .rating-hero{display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:52px}
+  .rating-score{background:var(--accent);color:#fff;font-size:44px;font-weight:700;font-family:'Cormorant Garamond',serif;border-radius:10px;padding:12px 22px;line-height:1;box-shadow:0 8px 24px rgba(232,104,58,.3)}
+  .rating-meta{text-align:left}
+  .rating-meta strong{display:block;font-family:'Cormorant Garamond',serif;font-size:28px;font-style:italic;font-weight:400;color:var(--dark)}
+  .rating-meta span{font-size:13.5px;color:var(--muted)}
+  .rating-meta a{color:var(--accent);font-weight:600;text-decoration:underline}
+  .score-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 48px;max-width:840px;margin:0 auto}
+  .score-item .score-row{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:7px;color:var(--dark);font-weight:500}
+  .score-item .score-row b{color:var(--accent)}
+  .score-bar{height:5px;background:#e5dfd6;border-radius:3px;overflow:hidden}
+  .score-fill{height:100%;background:var(--accent);border-radius:3px;width:0;transition:width 1.2s cubic-bezier(.4,0,.2,1)}
+
+  /* ---------- Facilities ---------- */
+  .facilities{background:var(--cream);padding:100px 0}
+  .fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:44px 56px;margin-top:16px}
+  .fac-group h5{font-family:'Cormorant Garamond',serif;font-size:19px;font-style:italic;color:var(--dark);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #e5dfd6;display:flex;align-items:center;gap:9px}
+  .fac-group h5 svg{color:var(--accent);flex-shrink:0}
+  .fac-group ul{list-style:none}
+  .fac-group li{font-size:13.5px;color:var(--muted);padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+  .fac-group li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0;margin-top:1px}
+  .fac-note{font-size:11px;color:var(--muted);opacity:.75;margin-left:3px}
+
+  /* ---------- Nearby ---------- */
+  .nearby{background:var(--warm);padding:100px 0}
+  .nearby-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:50px}
+  .nearby-col h5{font-family:'Cormorant Garamond',serif;font-size:21px;font-style:italic;margin-bottom:18px;color:var(--dark);display:flex;align-items:center;gap:10px}
+  .nearby-col h5 svg{color:var(--accent)}
+  .nearby-list{list-style:none}
+  .nearby-list li{display:flex;justify-content:space-between;align-items:baseline;font-size:13.5px;padding:9px 0;border-bottom:1px solid #e5dfd6;color:var(--dark);gap:8px}
+  .nearby-list li span{color:var(--muted);font-size:12px;white-space:nowrap;flex-shrink:0}
+
+  /* ---------- House Rules ---------- */
+  .house-rules{background:var(--cream);padding:100px 0}
+  .rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px}
+  .rule-card{background:#fff;border-radius:12px;padding:28px 32px;border:1px solid #ede8e0;box-shadow:var(--shadow-sm);transition:.3s}
+  .rule-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
+  .rule-card h5{font-family:'Cormorant Garamond',serif;font-size:20px;font-style:italic;color:var(--dark);margin-bottom:14px;display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid #f0ebe3}
+  .rule-card h5 svg{color:var(--accent);flex-shrink:0}
+  .rule-card p{font-size:13.5px;color:var(--muted);line-height:1.85}
+  .rule-card ul{list-style:none}
+  .rule-card li{font-size:13.5px;color:var(--muted);padding:4px 0;display:flex;align-items:baseline;gap:8px;line-height:1.7}
+  .rule-card li::before{content:'·';color:var(--accent);font-size:20px;line-height:0.7;flex-shrink:0}
+  .pay-logos{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .pay-logo{background:#f5f0ea;border-radius:5px;padding:4px 11px;font-size:11px;font-weight:700;color:var(--dark);letter-spacing:.5px;border:1px solid #e5dfd6}
+
   /* ---------- CTA Banner ---------- */
   .cta-banner{padding:90px 0;background:var(--accent);color:#fff;text-align:center;position:relative;overflow:hidden}
   .cta-banner::before{content:'';position:absolute;inset:0;background:
@@ -303,6 +350,10 @@
     .stats{grid-template-columns:repeat(2,1fr);padding:36px 24px;gap:30px 16px}
     .stat:nth-child(2){border-right:none}
     .exp-grid{grid-template-columns:repeat(2,1fr)}
+    .score-grid{grid-template-columns:repeat(2,1fr);gap:20px 32px}
+    .fac-grid{grid-template-columns:repeat(2,1fr);gap:36px 40px}
+    .nearby-grid{grid-template-columns:1fr}
+    .rules-grid{grid-template-columns:1fr}
   }
   @media(max-width:720px){
     section{padding:80px 0}
@@ -552,6 +603,54 @@
   </div>
 </section>
 
+<!-- Guest Ratings -->
+<section class="ratings">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">Guest Reviews</span>
+      <h2 class="reveal delay-1">Rated <em>Good</em> on Booking.com</h2>
+      <p class="section-sub reveal delay-2">Based on 187 verified guest reviews from travellers around the world.</p>
+    </div>
+    <div class="rating-hero reveal">
+      <div class="rating-score">7.5</div>
+      <div class="rating-meta">
+        <strong>Good — 187 reviews</strong>
+        <span>Verified guests on Booking.com &nbsp;·&nbsp; <a href="https://www.booking.com/hotel/np/kathmandu-family-house.en-gb.html" target="_blank" rel="noopener">Read all reviews →</a></span>
+      </div>
+    </div>
+    <div class="score-grid reveal delay-1">
+      <div class="score-item">
+        <div class="score-row">Staff <b>8.6</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="86"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Facilities <b>7.5</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="75"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Cleanliness <b>7.7</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="77"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Comfort <b>7.5</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="75"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Value for money <b>8.3</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="83"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Location <b>8.6</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="86"></div></div>
+      </div>
+      <div class="score-item">
+        <div class="score-row">Free WiFi <b>9.5</b></div>
+        <div class="score-bar"><div class="score-fill" data-w="95"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-banner">
   <div class="container">
@@ -607,6 +706,189 @@
           <h5>Email</h5>
           <p>We reply within a few hours.</p>
           <a href="mailto:familypeacehouse@gmail.com">familypeacehouse@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Facilities -->
+<section class="facilities">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">What's Included</span>
+      <h2 class="reveal delay-1">Full <em>facilities</em> at a glance</h2>
+      <p class="section-sub reveal delay-2">Everything you need for a comfortable, connected, and memorable stay in Kathmandu.</p>
+    </div>
+    <div class="fac-grid reveal delay-1">
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>Internet & General</h5>
+        <ul>
+          <li>Free WiFi in all areas</li>
+          <li>Heating</li>
+          <li>Soundproofing</li>
+          <li>Laptop safe</li>
+          <li>Fan</li>
+          <li>Family rooms</li>
+          <li>Non-smoking rooms</li>
+        </ul>
+      </div>
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M4 12h16"/><path d="M4 12a8 8 0 0 1 16 0"/><path d="M7 17l-1 2M10 16l-.5 3M13 16l.5 3M17 17l1 2"/></svg>Bathroom</h5>
+        <ul>
+          <li>Private bathroom options</li>
+          <li>Toilet paper &amp; towels</li>
+          <li>Slippers</li>
+          <li>Free toiletries</li>
+          <li>Hot shower</li>
+        </ul>
+      </div>
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>Food & Drink</h5>
+        <ul>
+          <li>Continental breakfast daily</li>
+          <li>À la carte options</li>
+          <li>Juice, pancakes, cheese &amp; fruit</li>
+          <li>Bar on-site</li>
+          <li>Room service</li>
+        </ul>
+      </div>
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>Activities</h5>
+        <ul>
+          <li>Bicycle rental <span class="fac-note">extra charge</span></li>
+          <li>Cooking class <span class="fac-note">extra charge</span></li>
+          <li>Bike tours <span class="fac-note">extra charge</span></li>
+          <li>Walking tours <span class="fac-note">extra charge</span></li>
+          <li>Hiking &amp; trekking <span class="fac-note">off-site</span></li>
+        </ul>
+      </div>
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>Wellness</h5>
+        <ul>
+          <li>Fitness / spa locker rooms</li>
+          <li>Full body massage</li>
+          <li>Head, hand &amp; foot massage</li>
+          <li>Couples massage</li>
+          <li>Neck &amp; back massage</li>
+        </ul>
+      </div>
+      <div class="fac-group">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Safety & Services</h5>
+        <ul>
+          <li>24-hour reception &amp; security</li>
+          <li>CCTV inside &amp; outside</li>
+          <li>Fire extinguishers &amp; smoke alarms</li>
+          <li>ATM / cash machine on-site</li>
+          <li>Currency exchange</li>
+          <li>Tour desk &amp; car hire</li>
+          <li>Airport shuttle <span class="fac-note">extra charge</span></li>
+          <li>Laundry <span class="fac-note">extra charge</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Nearby -->
+<section class="nearby">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">Surroundings</span>
+      <h2 class="reveal delay-1">Kathmandu on your <em>doorstep</em></h2>
+      <p class="section-sub reveal delay-2">History, culture, mountains, and the best momos in Nepal — all within easy reach.</p>
+    </div>
+    <div class="nearby-grid">
+      <div class="nearby-col reveal">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>What's Nearby</h5>
+        <ul class="nearby-list">
+          <li>Citron Garden <span>300 m</span></li>
+          <li>Shaheed Smarak Park <span>750 m</span></li>
+          <li>Dhobi Churko Park <span>800 m</span></li>
+          <li>Chibahal Public Park <span>850 m</span></li>
+          <li>Ashoka Smriti Chaitya <span>1.0 km</span></li>
+          <li>Garden of Dreams <span>1.1 km</span></li>
+          <li>Thamel Chowk <span>7 min walk</span></li>
+          <li>Narayanhiti Palace Museum <span>1.6 km</span></li>
+        </ul>
+      </div>
+      <div class="nearby-col reveal delay-1">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>Top Attractions</h5>
+        <ul class="nearby-list">
+          <li>Ranipokhari <span>1.7 km</span></li>
+          <li>Kathmandu Durbar Square <span>2.0 km</span></li>
+          <li>Hanuman Dhoka <span>2.1 km</span></li>
+          <li>Nasal Chowk <span>2.1 km</span></li>
+          <li>Swayambhunath (Monkey Temple) <span>2.2 km</span></li>
+          <li>Patan Durbar Square <span>6 km</span></li>
+          <li>Bhaktapur Durbar Square <span>16 km</span></li>
+          <li>Shivapuri National Park <span>9 km</span></li>
+        </ul>
+      </div>
+      <div class="nearby-col reveal delay-2">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>Restaurants & Cafes</h5>
+        <ul class="nearby-list">
+          <li>Pasta Restaurant <span>50 m</span></li>
+          <li>Khajuraho Restaurant <span>100 m</span></li>
+          <li>Gurkhas Cafe <span>250 m</span></li>
+        </ul>
+        <h5 style="margin-top:28px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M5 17H3a2 2 0 0 1-2-2V9l3-5h14l3 5v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M1 10h22"/></svg>Closest Airport</h5>
+        <ul class="nearby-list">
+          <li>Tribhuvan International Airport <span>5 km</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- House Rules -->
+<section class="house-rules">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">Good to Know</span>
+      <h2 class="reveal delay-1">House <em>rules & policies</em></h2>
+      <p class="section-sub reveal delay-2">A few things to keep in mind before you arrive — we like to keep things simple.</p>
+    </div>
+    <div class="rules-grid reveal delay-1">
+      <div class="rule-card">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Check-in & Check-out</h5>
+        <ul>
+          <li>Check-in from <strong>12:00 noon to 22:00</strong></li>
+          <li>Check-out by <strong>11:00 am</strong></li>
+          <li>Special requests can be added at next step</li>
+          <li>No age restriction for check-in</li>
+        </ul>
+      </div>
+      <div class="rule-card">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Children & Beds</h5>
+        <ul>
+          <li>Children older than <strong>2 years welcome</strong></li>
+          <li>Children 18+ charged as adults</li>
+          <li>Cots and extra beds not available</li>
+          <li>Group bookings (2+ rooms) may incur supplements</li>
+        </ul>
+      </div>
+      <div class="rule-card">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Other Policies</h5>
+        <ul>
+          <li>Pets are <strong>not allowed</strong></li>
+          <li>Property is fully non-smoking</li>
+          <li>Cancellation policy varies by room type</li>
+          <li>24-hour reception always available</li>
+        </ul>
+      </div>
+      <div class="rule-card">
+        <h5><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>Accepted Payments</h5>
+        <p style="margin-bottom:12px">We accept all major cards and cash:</p>
+        <div class="pay-logos">
+          <span class="pay-logo">Visa</span>
+          <span class="pay-logo">Mastercard</span>
+          <span class="pay-logo">Amex</span>
+          <span class="pay-logo">Discover</span>
+          <span class="pay-logo">JCB</span>
+          <span class="pay-logo">Diners</span>
+          <span class="pay-logo">UnionPay</span>
+          <span class="pay-logo">Cash</span>
         </div>
       </div>
     </div>
@@ -770,6 +1052,19 @@
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.14,rootMargin:'0px 0px -60px 0px'});
   document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-zoom').forEach(el=>io.observe(el));
+
+  // Score bar animation
+  const barIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('.score-fill').forEach(fill=>{
+        fill.style.width=fill.dataset.w+'%';
+      });
+      barIO.unobserve(e.target);
+    });
+  },{threshold:.3});
+  const scoreGrid=document.querySelector('.score-grid');
+  if(scoreGrid) barIO.observe(scoreGrid);
 
   // Animated counters
   const counters=document.querySelectorAll('[data-count]');
