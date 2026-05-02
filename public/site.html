@@ -3,167 +3,317 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Family Peace House — Guesthouse & B&B in Thamel, Kathmandu</title>
-<meta name="description" content="Family Peace House Pvt. Ltd. — a peaceful family-run guesthouse in the heart of Thamel, Kathmandu. Warm Nepali hospitality, clean rooms, and a rooftop garden." />
+<title>Family Peace House — Boutique Guesthouse in Thamel, Kathmandu</title>
+<meta name="description" content="Family Peace House Pvt. Ltd. — a peaceful family-run guesthouse in the heart of Thamel, Kathmandu. Warm Nepali hospitality, courtyard breakfasts, and a rooftop garden." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Georgia&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ---------- Reset & base ---------- */
+  /* ---------- Reset ---------- */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;color:#333;line-height:1.6;background:#fff;overflow-x:hidden}
+  body{font-family:'Inter',sans-serif;color:#3a3530;line-height:1.7;background:#fbf7f2;overflow-x:hidden;font-weight:400}
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
   button{font-family:inherit;cursor:pointer;border:none;background:none}
+
   :root{
     --accent:#E8683A;
     --accent-dark:#c8541f;
-    --dark:#1a1a1a;
-    --text:#333;
-    --muted:#777;
-    --maxw:1100px;
+    --accent-light:#f4a17a;
+    --gold:#c9a961;
+    --cream:#fbf7f2;
+    --warm:#f5ede2;
+    --dark:#1f1a16;
+    --text:#3a3530;
+    --muted:#8a7f74;
+    --maxw:1180px;
+    --shadow-sm:0 4px 14px rgba(70,40,20,.08);
+    --shadow-md:0 12px 35px rgba(70,40,20,.12);
+    --shadow-lg:0 25px 60px rgba(70,40,20,.18);
   }
-  .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-  section{padding:80px 0}
-  h1,h2,h3{font-family:Georgia,'Times New Roman',serif;color:var(--dark);font-weight:600}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:110px 0;position:relative}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--dark);font-weight:500;letter-spacing:.3px}
+
+  /* ---------- Animations ---------- */
+  @keyframes kenburns{0%{transform:scale(1) translate(0,0)}100%{transform:scale(1.15) translate(-2%,-2%)}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes floatSlow{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-20px) rotate(8deg)}}
+  @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeRight{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
+  @keyframes fadeLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+  @keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+  @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.4);opacity:0}}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+  @keyframes flagWave{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(2deg) translateY(-4px)}}
+
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+  .reveal-l{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal-l.in{opacity:1;transform:translateX(0)}
+  .reveal-r{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal-r.in{opacity:1;transform:translateX(0)}
+  .reveal-zoom{opacity:0;transform:scale(.9);transition:opacity .9s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+  .reveal-zoom.in{opacity:1;transform:scale(1)}
+  .delay-1{transition-delay:.12s}.delay-2{transition-delay:.24s}.delay-3{transition-delay:.36s}.delay-4{transition-delay:.48s}
 
   /* ---------- Navigation ---------- */
-  .nav{position:fixed;top:0;left:0;right:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.08);z-index:1000}
-  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
-  .logo{font-family:'Dancing Script',cursive;font-size:28px;color:var(--accent);font-weight:700;white-space:nowrap}
-  .nav-links{display:flex;gap:32px;list-style:none}
-  .nav-links a{font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--dark);padding:6px 0;border-bottom:2px solid transparent;transition:.25s}
-  .nav-links a:hover,.nav-links a.active{color:var(--accent);border-color:var(--accent)}
-  .hamburger{display:none;flex-direction:column;gap:5px;padding:8px}
-  .hamburger span{width:24px;height:2px;background:var(--dark);transition:.3s}
+  .nav{position:fixed;top:0;left:0;right:0;background:rgba(251,247,242,.6);backdrop-filter:blur(14px);
+    z-index:1000;transition:.4s;border-bottom:1px solid transparent}
+  .nav.scrolled{background:rgba(251,247,242,.96);box-shadow:0 4px 30px rgba(70,40,20,.08);border-bottom-color:rgba(0,0,0,.05)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-family:'Dancing Script',cursive;font-size:30px;color:var(--accent);font-weight:700;white-space:nowrap;
+    transition:.3s}
+  .logo:hover{transform:scale(1.05) rotate(-1deg)}
+  .nav-links{display:flex;gap:38px;list-style:none}
+  .nav-links a{position:relative;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;color:var(--dark);padding:6px 0;transition:.3s}
+  .nav-links a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--accent);transition:.35s ease;transform:translateX(-50%)}
+  .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+  .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+  .nav-cta{background:var(--accent);color:#fff!important;padding:10px 22px!important;border-radius:30px;letter-spacing:1px!important;transition:.3s}
+  .nav-cta::after{display:none!important}
+  .nav-cta:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(232,104,58,.4);color:#fff!important}
+  .hamburger{display:none;flex-direction:column;gap:6px;padding:8px;z-index:1001}
+  .hamburger span{width:26px;height:2px;background:var(--dark);transition:.35s}
+  .hamburger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
   /* ---------- Hero ---------- */
-  .hero{position:relative;min-height:560px;margin-top:62px;background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.5)),
-    url('/images/courtyard-flags.png') center/cover no-repeat;
-    display:flex;align-items:center;justify-content:center;color:#fff;text-align:center}
-  .hero-content{padding:40px 20px 200px}
-  .hero h1{color:#fff;font-size:clamp(36px,5vw,58px);letter-spacing:1px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
-  .hero p{font-size:18px;margin-top:14px;opacity:.95}
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+    color:#fff;text-align:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+  .hero-bg::before{content:'';position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.25) 40%,rgba(0,0,0,.7) 100%);z-index:2}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 20s ease-out infinite alternate}
+  .hero-content{position:relative;z-index:3;padding:140px 24px 220px;max-width:900px}
+  .hero-eyebrow{display:inline-block;font-family:'Dancing Script',cursive;font-size:30px;color:var(--accent-light);
+    margin-bottom:14px;animation:fadeUp 1s .2s both}
+  .hero h1{color:#fff;font-size:clamp(48px,7vw,88px);line-height:1.05;letter-spacing:.5px;font-weight:500;
+    text-shadow:0 4px 30px rgba(0,0,0,.4);animation:fadeUp 1.1s .4s both}
+  .hero h1 em{color:var(--accent-light);font-style:italic;font-weight:400}
+  .hero p{font-size:18px;margin-top:22px;opacity:.92;max-width:560px;margin-left:auto;margin-right:auto;
+    animation:fadeUp 1.1s .6s both}
+  .hero-actions{margin-top:36px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp 1.1s .8s both}
+  .btn-primary{background:var(--accent);color:#fff;padding:15px 34px;border-radius:30px;font-weight:600;
+    text-transform:uppercase;letter-spacing:1.5px;font-size:12px;transition:.35s;display:inline-flex;align-items:center;gap:10px}
+  .btn-primary:hover{background:var(--accent-dark);transform:translateY(-3px);box-shadow:0 15px 35px rgba(232,104,58,.45)}
+  .btn-ghost{background:transparent;color:#fff;padding:15px 34px;border-radius:30px;border:1.5px solid rgba(255,255,255,.5);
+    font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:12px;transition:.35s;display:inline-flex;align-items:center;gap:10px}
+  .btn-ghost:hover{background:#fff;color:var(--dark);border-color:#fff;transform:translateY(-3px)}
+
+  .scroll-cue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:#fff;z-index:4;
+    display:flex;flex-direction:column;align-items:center;gap:8px;font-size:11px;letter-spacing:2px;opacity:.85;
+    text-transform:uppercase;animation:bounce 2.4s ease-in-out infinite}
+  .scroll-cue::after{content:'';width:1px;height:36px;background:rgba(255,255,255,.7)}
+
+  /* Floating decorative shapes */
+  .float-deco{position:absolute;pointer-events:none;z-index:3;opacity:.85}
+  .float-deco.f1{top:18%;left:6%;font-size:34px;animation:floatSlow 6s ease-in-out infinite}
+  .float-deco.f2{top:24%;right:8%;font-size:28px;animation:floatSlow 7s ease-in-out infinite .8s}
+  .float-deco.f3{bottom:30%;left:10%;font-size:24px;animation:float 5s ease-in-out infinite .4s}
 
   /* Booking bar */
-  .booking{position:absolute;left:50%;bottom:-50px;transform:translateX(-50%);width:min(1100px,95%);
-    background:rgba(20,20,20,.88);backdrop-filter:blur(6px);padding:22px;border-radius:6px;
-    box-shadow:0 20px 60px rgba(0,0,0,.3)}
-  .booking-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-  .booking label{display:block;color:#cfcfcf;font-size:11px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
-  .booking input,.booking select{width:100%;padding:10px;border:none;border-radius:3px;background:#fff;color:#333;font-size:14px;font-family:inherit}
-  .booking .btn-check{grid-column:span 6;background:var(--accent);color:#fff;font-weight:700;
-    text-transform:uppercase;letter-spacing:1.5px;padding:14px;border-radius:3px;font-size:13px;
-    transition:.25s;margin-top:6px}
-  .booking .btn-check:hover{background:var(--accent-dark)}
+  .booking{position:absolute;left:50%;bottom:-60px;transform:translateX(-50%);width:min(1100px,94%);
+    background:#fff;padding:28px;border-radius:8px;box-shadow:var(--shadow-lg);z-index:10;
+    animation:fadeUp 1s 1s both}
+  .booking-grid{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:16px;align-items:end}
+  .booking label{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
+  .booking input,.booking select{width:100%;padding:12px 0;border:none;border-bottom:1px solid #e5dfd6;background:transparent;color:var(--dark);font-size:14px;font-family:inherit;transition:.3s;outline:none}
+  .booking input:focus,.booking select:focus{border-bottom-color:var(--accent)}
+  .booking .btn-check{background:var(--accent);color:#fff;font-weight:700;text-transform:uppercase;
+    letter-spacing:1.5px;padding:14px 28px;border-radius:4px;font-size:12px;transition:.3s;white-space:nowrap}
+  .booking .btn-check:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 10px 25px rgba(232,104,58,.35)}
+
+  /* ---------- Marquee features ---------- */
+  .marquee{padding:24px 0;background:var(--dark);color:#fff;overflow:hidden;border-top:1px solid rgba(255,255,255,.05)}
+  .marquee-track{display:flex;gap:60px;width:max-content;animation:marquee 35s linear infinite}
+  .marquee span{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;letter-spacing:1px;display:inline-flex;align-items:center;gap:60px;color:#fff}
+  .marquee span::after{content:'✦';color:var(--accent);font-size:14px}
 
   /* ---------- Welcome ---------- */
-  .welcome{padding-top:140px;text-align:center}
-  .welcome .accent{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;display:block}
-  .welcome h2{font-size:36px;margin-bottom:24px;font-style:italic;font-weight:400}
-  .welcome p{max-width:760px;margin:0 auto;color:#555;font-size:16px}
-  .divider{width:50px;height:3px;background:var(--accent);margin:20px auto 28px}
+  .welcome{padding-top:180px;text-align:center}
+  .eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;margin-bottom:20px;display:inline-flex;align-items:center;gap:14px}
+  .eyebrow::before,.eyebrow::after{content:'';width:30px;height:1px;background:var(--accent)}
+  .welcome h2{font-size:clamp(36px,4.5vw,56px);font-style:italic;font-weight:400;line-height:1.15;max-width:780px;margin:0 auto 28px}
+  .welcome h2 em{color:var(--accent);font-style:italic}
+  .welcome-text{max-width:720px;margin:0 auto;color:var(--muted);font-size:16.5px}
+  .signature{margin-top:32px;font-family:'Dancing Script',cursive;font-size:32px;color:var(--accent)}
+
+  .stats{margin-top:80px;display:grid;grid-template-columns:repeat(4,1fr);gap:30px;max-width:980px;margin-left:auto;margin-right:auto;
+    padding:50px;background:#fff;border-radius:12px;box-shadow:var(--shadow-md)}
+  .stat{text-align:center;border-right:1px solid #eee5d8;transition:.3s}
+  .stat:last-child{border-right:none}
+  .stat:hover{transform:translateY(-4px)}
+  .stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--accent);font-weight:600;line-height:1}
+  .stat-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:10px;font-weight:600}
 
   /* ---------- Gallery ---------- */
-  .gallery{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:20px}
-  .gallery-right{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px}
-  .gimg{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;min-height:180px}
-  .gimg.large{min-height:380px}
-  .gimg img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-  .gimg:hover img{transform:scale(1.08)}
-  .gimg .label{position:absolute;inset:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;
-    font-family:Georgia,serif;font-size:22px;letter-spacing:1px;opacity:0;transition:.35s}
-  .gimg:hover .label{opacity:1}
+  .gallery-section{background:var(--warm);padding:120px 0}
+  .section-title{text-align:center;margin-bottom:60px}
+  .section-title h2{font-size:clamp(36px,4.5vw,52px);font-style:italic;font-weight:400;line-height:1.15}
+  .section-title h2 em{color:var(--accent)}
+  .section-sub{color:var(--muted);max-width:560px;margin:18px auto 0;font-size:15.5px}
+
+  .gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:240px 240px;gap:18px}
+  .gimg{position:relative;overflow:hidden;border-radius:8px;cursor:pointer;box-shadow:var(--shadow-sm);transition:.5s}
+  .gimg.tall{grid-row:span 2}
+  .gimg.wide{grid-column:span 2}
+  .gimg img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+  .gimg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7));opacity:.5;transition:.5s}
+  .gimg:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+  .gimg:hover img{transform:scale(1.12)}
+  .gimg:hover::after{opacity:.85}
+  .gimg .label{position:absolute;left:22px;bottom:18px;color:#fff;z-index:2;transition:.5s;transform:translateY(8px);opacity:.95}
+  .gimg .label-t{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;line-height:1}
+  .gimg .label-s{font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-top:6px;display:block}
+  .gimg:hover .label{transform:translateY(0)}
 
   /* ---------- Rooms ---------- */
-  .rooms{background:#faf7f3}
-  .section-title{text-align:center;margin-bottom:50px}
-  .section-title .accent{color:var(--accent);font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;display:block;margin-bottom:10px}
-  .section-title h2{font-size:34px;font-style:italic;font-weight:400}
-  .room{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;margin-bottom:70px}
+  .rooms{background:var(--cream)}
+  .room{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;margin-bottom:120px}
   .room:last-child{margin-bottom:0}
-  .room.reverse .room-img{order:2}
-  .room-img{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,.12)}
-  .room-img img{width:100%;height:340px;object-fit:cover}
-  .price-badge{position:absolute;top:20px;left:0;background:var(--accent);color:#fff;
-    padding:10px 18px;font-weight:700;font-size:14px;letter-spacing:.5px;border-radius:0 3px 3px 0;
-    box-shadow:0 4px 10px rgba(0,0,0,.2)}
-  .room-info h3{font-size:28px;margin-bottom:14px;font-style:italic;font-weight:500}
-  .room-info p{color:#666;margin-bottom:20px}
-  .amenities{display:flex;flex-wrap:wrap;gap:18px;margin-bottom:22px;padding:16px 0;border-top:1px solid #e5dfd6;border-bottom:1px solid #e5dfd6}
-  .amenities span{font-size:13px;color:#555;display:inline-flex;align-items:center;gap:6px}
-  .amenities span em{font-style:normal;font-size:18px}
-  .btn-outline{display:inline-block;padding:11px 28px;border:2px solid var(--accent);color:var(--accent);
-    font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:1.5px;border-radius:2px;transition:.25s}
-  .btn-outline:hover{background:var(--accent);color:#fff}
+  .room.reverse .room-img-wrap{order:2}
+  .room-img-wrap{position:relative}
+  .room-img{position:relative;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-lg);transition:.6s}
+  .room-img img{width:100%;height:440px;object-fit:cover;transition:transform 1.5s cubic-bezier(.2,.7,.2,1)}
+  .room:hover .room-img{transform:translateY(-8px)}
+  .room:hover .room-img img{transform:scale(1.08)}
+  .room-deco{position:absolute;width:120px;height:120px;border:2px solid var(--accent);border-radius:10px;z-index:-1;
+    transition:.5s}
+  .room:not(.reverse) .room-deco{top:-20px;left:-20px}
+  .room.reverse .room-deco{bottom:-20px;right:-20px}
+  .room:hover .room-deco{transform:scale(1.1)}
+  .price-badge{position:absolute;top:24px;right:-12px;background:var(--accent);color:#fff;
+    padding:14px 22px;font-weight:700;font-size:13px;letter-spacing:.5px;border-radius:4px;
+    box-shadow:0 8px 20px rgba(232,104,58,.4);z-index:3}
+  .price-badge::after{content:'';position:absolute;right:0;bottom:-6px;border:6px solid transparent;border-top-color:var(--accent-dark);border-right-color:var(--accent-dark)}
+  .room-info .eyebrow{margin-bottom:16px}
+  .room-info h3{font-size:42px;margin-bottom:18px;font-style:italic;font-weight:500;line-height:1.1}
+  .room-info > p{color:var(--muted);margin-bottom:28px;font-size:15.5px}
+  .amenities{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 22px;margin-bottom:30px;padding:24px 0;
+    border-top:1px solid #eee5d8;border-bottom:1px solid #eee5d8}
+  .amenities span{font-size:13.5px;color:var(--text);display:inline-flex;align-items:center;gap:10px}
+  .amenities span em{font-style:normal;font-size:18px;color:var(--accent)}
+  .btn-outline{display:inline-flex;align-items:center;gap:12px;padding:14px 30px;border:1.5px solid var(--accent);color:var(--accent);
+    font-weight:600;text-transform:uppercase;font-size:12px;letter-spacing:1.5px;border-radius:30px;transition:.35s}
+  .btn-outline:hover{background:var(--accent);color:#fff;transform:translateY(-3px);box-shadow:0 12px 28px rgba(232,104,58,.35)}
+  .btn-outline span{transition:.3s}
+  .btn-outline:hover span{transform:translateX(4px)}
+
+  /* ---------- Experience strip ---------- */
+  .experience{background:var(--warm);padding:110px 0}
+  .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-top:50px}
+  .exp-card{background:#fff;padding:40px 28px;border-radius:10px;text-align:center;transition:.45s;
+    border:1px solid transparent;cursor:default}
+  .exp-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-md);border-color:var(--accent-light)}
+  .exp-icon{width:64px;height:64px;border-radius:50%;background:var(--warm);display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;font-size:28px;transition:.45s;color:var(--accent)}
+  .exp-card:hover .exp-icon{background:var(--accent);color:#fff;transform:rotate(360deg) scale(1.1)}
+  .exp-card h4{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:10px;color:var(--dark)}
+  .exp-card p{color:var(--muted);font-size:14px;line-height:1.65}
 
   /* ---------- Testimonials ---------- */
   .testimonials{position:relative;background:
-    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.72)),
+    linear-gradient(135deg,rgba(31,26,22,.85),rgba(31,26,22,.7)),
     url('/images/courtyard-breakfast.png') center/cover no-repeat fixed;
-    color:#fff;text-align:center}
+    color:#fff;text-align:center;padding:130px 0}
   .testimonials .section-title h2{color:#fff}
-  .t-track{position:relative;max-width:760px;margin:0 auto;min-height:240px}
-  .t-card{position:absolute;inset:0;opacity:0;transition:opacity .6s;display:flex;flex-direction:column;align-items:center;padding:0 20px}
-  .t-card.active{opacity:1;position:relative}
-  .t-avatar{width:70px;height:70px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);margin-bottom:18px}
+  .testimonials .eyebrow{color:var(--accent-light)}
+  .testimonials .eyebrow::before,.testimonials .eyebrow::after{background:var(--accent-light)}
+  .t-track{position:relative;max-width:820px;margin:50px auto 0;min-height:280px}
+  .t-card{position:absolute;inset:0;opacity:0;transition:opacity .8s,transform .8s;display:flex;flex-direction:column;align-items:center;padding:0 20px;transform:translateY(20px);pointer-events:none}
+  .t-card.active{opacity:1;transform:translateY(0);position:relative;pointer-events:auto}
+  .t-quote{font-family:'Cormorant Garamond',serif;font-size:80px;color:var(--accent);line-height:.5;margin-bottom:10px;opacity:.7}
+  .t-avatar{width:78px;height:78px;border-radius:50%;overflow:hidden;border:3px solid var(--accent);margin:24px auto 18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.3)}
   .t-avatar img{width:100%;height:100%;object-fit:cover}
-  .t-text{font-size:18px;font-style:italic;line-height:1.7;max-width:680px;margin-bottom:18px;opacity:.95}
-  .t-name{font-weight:700;color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-size:13px}
-  .t-date{font-size:12px;opacity:.7;margin-top:4px}
-  .dots{display:flex;gap:10px;justify-content:center;margin-top:30px}
-  .dot{width:11px;height:11px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:.25s}
-  .dot.active{background:var(--accent);transform:scale(1.2)}
+  .t-text{font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;line-height:1.55;max-width:680px;margin-bottom:24px;color:#f4ebe0;font-weight:400}
+  .t-name{font-weight:700;color:var(--accent-light);letter-spacing:2px;text-transform:uppercase;font-size:12px}
+  .t-date{font-size:12px;opacity:.65;margin-top:6px;letter-spacing:1px}
+  .dots{display:flex;gap:12px;justify-content:center;margin-top:36px}
+  .dot{width:36px;height:3px;border-radius:2px;background:rgba(255,255,255,.3);cursor:pointer;transition:.4s;border:none;padding:0}
+  .dot.active{background:var(--accent);width:54px}
+
+  /* ---------- CTA Banner ---------- */
+  .cta-banner{padding:90px 0;background:var(--accent);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .cta-banner::before{content:'';position:absolute;inset:0;background:
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.15) 0%,transparent 40%),
+    radial-gradient(circle at 80% 70%,rgba(255,255,255,.1) 0%,transparent 40%)}
+  .cta-banner h2{position:relative;color:#fff;font-size:clamp(34px,4.5vw,48px);font-style:italic;font-weight:400;margin-bottom:14px}
+  .cta-banner p{position:relative;font-size:16px;opacity:.92;margin-bottom:30px;max-width:520px;margin-left:auto;margin-right:auto}
+  .cta-banner .btn-ghost{position:relative;border-color:#fff}
+  .cta-banner .btn-ghost:hover{background:#fff;color:var(--accent)}
 
   /* ---------- Footer ---------- */
-  footer{background:var(--dark);color:#bbb;padding:70px 0 0}
-  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1.3fr;gap:50px}
-  .foot-col h4{color:#fff;font-family:Georgia,serif;font-size:18px;margin-bottom:20px;letter-spacing:.5px}
-  .foot-col p,.foot-col a{font-size:14px;color:#bbb;line-height:1.9}
+  footer{background:var(--dark);color:#9a9089;padding:90px 0 0;position:relative}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px}
+  .foot-col h4{color:#fff;font-family:'Cormorant Garamond',serif;font-size:22px;font-style:italic;margin-bottom:22px;font-weight:500}
+  .foot-col p,.foot-col a{font-size:14px;color:#9a9089;line-height:1.95;transition:.3s}
   .foot-col a:hover{color:var(--accent)}
   .foot-col ul{list-style:none}
-  .foot-logo{font-family:'Dancing Script',cursive;color:var(--accent);font-size:26px;margin-bottom:16px;display:block}
-  .news-form{display:flex;margin-top:14px}
-  .news-form input{flex:1;padding:11px;border:none;background:#2a2a2a;color:#fff;border-radius:2px 0 0 2px;font-family:inherit}
-  .news-form button{background:var(--accent);color:#fff;padding:0 20px;font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:1px;border-radius:0 2px 2px 0;transition:.25s}
-  .news-form button:hover{background:var(--accent-dark)}
-  .socials{margin-top:18px;display:flex;gap:14px;font-size:20px}
-  .socials a{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;background:#2a2a2a;border-radius:50%;transition:.25s}
-  .socials a:hover{background:var(--accent);color:#fff}
-  .foot-bottom{border-top:1px solid #2a2a2a;margin-top:50px;padding:22px 0;text-align:center;font-size:13px;color:#888}
+  .foot-col li{margin-bottom:6px}
+  .foot-logo{font-family:'Dancing Script',cursive;color:var(--accent);font-size:30px;margin-bottom:18px;display:block}
+  .news-form{display:flex;margin-top:14px;background:rgba(255,255,255,.06);border-radius:30px;padding:5px;border:1px solid rgba(255,255,255,.1)}
+  .news-form input{flex:1;padding:12px 18px;border:none;background:transparent;color:#fff;font-family:inherit;outline:none;font-size:13px}
+  .news-form input::placeholder{color:#7a6f64}
+  .news-form button{background:var(--accent);color:#fff;padding:0 22px;font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:1.5px;border-radius:24px;transition:.3s}
+  .news-form button:hover{background:var(--accent-dark);transform:scale(1.05)}
+  .socials{margin-top:22px;display:flex;gap:12px}
+  .socials a{display:inline-flex;width:40px;height:40px;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border-radius:50%;transition:.35s;font-size:14px;font-weight:700;color:#fff}
+  .socials a:hover{background:var(--accent);transform:translateY(-4px) rotate(8deg);box-shadow:0 10px 20px rgba(232,104,58,.4)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.06);margin-top:60px;padding:24px 0;text-align:center;font-size:12.5px;color:#6a615a;letter-spacing:.5px}
 
   /* ---------- Responsive ---------- */
-  @media(max-width:900px){
+  @media(max-width:980px){
     .booking-grid{grid-template-columns:repeat(2,1fr)}
-    .booking .btn-check{grid-column:span 2}
-    .gallery{grid-template-columns:1fr}
-    .room,.room.reverse{grid-template-columns:1fr;gap:25px}
-    .room.reverse .room-img{order:0}
-    .room-img img{height:260px}
-    .foot-grid{grid-template-columns:1fr;gap:35px}
+    .booking .btn-check{grid-column:span 2;width:100%}
+    .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,200px)}
+    .gimg.tall{grid-row:span 1}
+    .gimg.wide{grid-column:span 2}
+    .room,.room.reverse{grid-template-columns:1fr;gap:40px}
+    .room.reverse .room-img-wrap{order:0}
+    .room-img img{height:320px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:40px}
+    .stats{grid-template-columns:repeat(2,1fr);padding:36px 24px;gap:30px 16px}
+    .stat:nth-child(2){border-right:none}
+    .exp-grid{grid-template-columns:repeat(2,1fr)}
   }
   @media(max-width:720px){
+    section{padding:80px 0}
     .hamburger{display:flex}
-    .nav-links{position:absolute;top:100%;right:0;background:#fff;flex-direction:column;padding:20px 30px;gap:18px;
-      box-shadow:0 10px 20px rgba(0,0,0,.1);transform:translateY(-10px);opacity:0;pointer-events:none;transition:.25s}
-    .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
-    .hero{min-height:480px}
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:75%;background:var(--cream);flex-direction:column;
+      padding:100px 40px;gap:24px;box-shadow:-10px 0 40px rgba(0,0,0,.15);transform:translateX(100%);transition:.4s ease}
+    .nav-links.open{transform:translateX(0)}
+    .nav-links a{font-size:16px}
+    .hero-content{padding:120px 24px 240px}
     .welcome{padding-top:200px}
-    section{padding:60px 0}
+    .amenities{grid-template-columns:repeat(2,1fr)}
+    .foot-grid{grid-template-columns:1fr;gap:40px}
+    .booking{padding:20px}
+    .stats{grid-template-columns:1fr 1fr}
   }
   @media(max-width:480px){
     .booking-grid{grid-template-columns:1fr}
     .booking .btn-check{grid-column:span 1}
-    .welcome{padding-top:280px}
+    .welcome{padding-top:340px}
+    .room-info h3{font-size:32px}
+    .gallery{grid-template-columns:1fr;grid-template-rows:repeat(4,200px)}
+    .gimg.wide{grid-column:span 1}
+    .exp-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
   }
 </style>
 </head>
 <body>
 
 <!-- Nav -->
-<nav class="nav">
+<nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="#home" class="logo">Family Peace House</a>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -173,18 +323,31 @@
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#rooms">Rooms</a></li>
       <li><a href="#gallery">Gallery</a></li>
-      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#booking" class="nav-cta">Book Now</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- Hero -->
 <header class="hero" id="home">
-  <div class="hero-content">
-    <h1>Welcome Home in Thamel</h1>
-    <p>Peaceful stays in the heart of Kathmandu</p>
+  <div class="hero-bg">
+    <img src="/images/courtyard-flags.png" alt="Prayer-flag courtyard at Family Peace House">
   </div>
-  <form class="booking" id="bookingForm" novalidate>
+  <div class="float-deco f1">🏔</div>
+  <div class="float-deco f2">🪷</div>
+  <div class="float-deco f3">✦</div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Namaste &amp; Welcome</span>
+    <h1>A peaceful <em>home</em><br>in the heart of Thamel</h1>
+    <p>Family-run guesthouse in Kathmandu — warm Nepali hospitality, courtyard breakfasts, and rooftop sunsets over the Himalayan foothills.</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn-primary">Book your stay →</a>
+      <a href="#rooms" class="btn-ghost">Explore rooms</a>
+    </div>
+  </div>
+  <form class="booking" id="booking" novalidate>
     <div class="booking-grid">
       <div><label>Arrival</label><input type="date" name="arrival" required></div>
       <div><label>Departure</label><input type="date" name="departure" required></div>
@@ -194,33 +357,53 @@
       <div><label>Children</label>
         <select name="children"><option selected>0</option><option>1</option><option>2</option><option>3</option></select>
       </div>
-      <div><label>Name &amp; Last Name</label><input type="text" name="name" placeholder="Your name" required></div>
       <div><label>Email</label><input type="email" name="email" placeholder="you@example.com" required></div>
       <button type="submit" class="btn-check">Check Availability</button>
     </div>
   </form>
+  <div class="scroll-cue">Scroll</div>
 </header>
+
+<!-- Marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Free WiFi</span><span>Rooftop Garden</span><span>Courtyard Breakfast</span><span>Hot Showers</span>
+    <span>Trekking Tours</span><span>Airport Pickup</span><span>Local Guides</span><span>Family Hospitality</span>
+    <span>Free WiFi</span><span>Rooftop Garden</span><span>Courtyard Breakfast</span><span>Hot Showers</span>
+    <span>Trekking Tours</span><span>Airport Pickup</span><span>Local Guides</span><span>Family Hospitality</span>
+  </div>
+</div>
 
 <!-- Welcome -->
 <section class="welcome">
   <div class="container">
-    <span class="accent">Welcome to Family Peace House</span>
-    <h2>Guesthouse &amp; Bed and Breakfast</h2>
-    <div class="divider"></div>
-    <p>Nestled in a quiet pedestrian lane in the heart of Thamel, Family Peace House offers a peaceful retreat from the city's buzz. Managed personally by our owner Bimal and his team, we provide warm Nepali hospitality, clean comfortable rooms, and everything you need to explore Kathmandu with ease.</p>
+    <span class="eyebrow reveal">Welcome to Family Peace House</span>
+    <h2 class="reveal delay-1">A guesthouse where guests<br>become <em>family</em>.</h2>
+    <p class="welcome-text reveal delay-2">Tucked away on a quiet pedestrian lane in the heart of Thamel, Family Peace House is a peaceful retreat from the city's buzz. Personally managed by our owner Bimal and his team, we welcome travelers from around the world with warm Nepali hospitality, freshly cooked breakfasts under prayer flags, and everything you need to fall in love with Kathmandu.</p>
+    <div class="signature reveal delay-3">— Bimal &amp; family</div>
+
+    <div class="stats reveal-zoom delay-2">
+      <div class="stat"><div class="stat-num" data-count="15">0</div><div class="stat-label">Years of warmth</div></div>
+      <div class="stat"><div class="stat-num" data-count="2400">0</div><div class="stat-label">Happy guests</div></div>
+      <div class="stat"><div class="stat-num" data-count="48">0</div><div class="stat-label">Countries</div></div>
+      <div class="stat"><div class="stat-num" data-count="4.9" data-decimals="1">0</div><div class="stat-label">Avg. rating</div></div>
+    </div>
   </div>
 </section>
 
 <!-- Gallery -->
-<section id="gallery" style="padding-top:0">
+<section class="gallery-section" id="gallery">
   <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">Our Spaces</span>
+      <h2 class="reveal delay-1">A glimpse of <em>home</em></h2>
+      <p class="section-sub reveal delay-2">From the prayer-flag courtyard to the rooftop garden, every corner is made for slowing down.</p>
+    </div>
     <div class="gallery">
-      <div class="gimg large"><img src="/images/courtyard-flags.png" alt="Courtyard with prayer flags"><div class="label">Prayer Flag Courtyard</div></div>
-      <div class="gallery-right">
-        <div class="gimg" style="grid-column:span 2"><img src="/images/courtyard-breakfast.png" alt="Guests enjoying breakfast"><div class="label">Breakfast with Guests</div></div>
-        <div class="gimg"><img src="/images/exterior.png" alt="Guesthouse exterior"><div class="label">Our Guesthouse</div></div>
-        <div class="gimg"><img src="/images/room-twin.png" alt="Twin room"><div class="label">Comfortable Rooms</div></div>
-      </div>
+      <div class="gimg tall reveal-zoom"><img src="/images/courtyard-flags.png" alt="Courtyard with prayer flags"><div class="label"><span class="label-s">Outdoor</span><span class="label-t">Prayer-Flag Courtyard</span></div></div>
+      <div class="gimg wide reveal-zoom delay-1"><img src="/images/courtyard-breakfast.png" alt="Guests enjoying breakfast"><div class="label"><span class="label-s">Mornings</span><span class="label-t">Family Breakfast</span></div></div>
+      <div class="gimg reveal-zoom delay-2"><img src="/images/exterior.png" alt="Guesthouse exterior"><div class="label"><span class="label-s">Arrival</span><span class="label-t">Our Guesthouse</span></div></div>
+      <div class="gimg reveal-zoom delay-3"><img src="/images/room-twin.png" alt="Twin bedroom"><div class="label"><span class="label-s">Stay</span><span class="label-t">Comfortable Rooms</span></div></div>
     </div>
   </div>
 </section>
@@ -229,53 +412,85 @@
 <section class="rooms" id="rooms">
   <div class="container">
     <div class="section-title">
-      <span class="accent">Our Rooms</span>
-      <h2>Comfortable Stays for Every Traveler</h2>
+      <span class="eyebrow reveal">Our Rooms</span>
+      <h2 class="reveal delay-1">Comfortable stays for <em>every traveler</em></h2>
     </div>
 
     <div class="room">
-      <div class="room-img">
-        <img src="/images/room-twin.png" alt="Standard Room">
-        <span class="price-badge">NPR 800 / Per night</span>
-      </div>
-      <div class="room-info">
-        <h3>Standard Room</h3>
-        <p>Cozy and clean room perfect for solo travelers or couples. Features a comfortable bed, hot shower, and free WiFi.</p>
-        <div class="amenities">
-          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+      <div class="room-img-wrap reveal-l">
+        <span class="room-deco"></span>
+        <div class="room-img">
+          <img src="/images/room-twin.png" alt="Standard Room">
+          <span class="price-badge">NPR 800 / night</span>
         </div>
-        <a href="#" class="btn-outline">Read more</a>
+      </div>
+      <div class="room-info reveal-r">
+        <span class="eyebrow">01 — Standard</span>
+        <h3>Standard Room</h3>
+        <p>Cozy and spotless room perfect for solo travelers or couples. Comfortable bed, hot shower, plenty of natural light, and free WiFi to keep you connected.</p>
+        <div class="amenities">
+          <span><em>🛏</em> Twin / Double bed</span><span><em>📶</em> Fast WiFi</span><span><em>🚿</em> Hot Shower</span>
+          <span><em>🧳</em> Luggage Storage</span><span><em>☕</em> Breakfast included</span><span><em>🌅</em> Natural light</span>
+        </div>
+        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
       </div>
     </div>
 
     <div class="room reverse">
-      <div class="room-img">
-        <img src="/images/exterior.png" alt="Deluxe Room">
-        <span class="price-badge">NPR 1,500 / Per night</span>
-      </div>
-      <div class="room-info">
-        <h3>Deluxe Room</h3>
-        <p>Spacious deluxe room with mountain views, en-suite bathroom, and premium bedding. Ideal for couples wanting extra comfort.</p>
-        <div class="amenities">
-          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+      <div class="room-img-wrap reveal-r">
+        <span class="room-deco"></span>
+        <div class="room-img">
+          <img src="/images/exterior.png" alt="Deluxe Room">
+          <span class="price-badge">NPR 1,500 / night</span>
         </div>
-        <a href="#" class="btn-outline">Read more</a>
+      </div>
+      <div class="room-info reveal-l">
+        <span class="eyebrow">02 — Deluxe</span>
+        <h3>Deluxe Room</h3>
+        <p>Spacious deluxe room with views over Thamel rooftops, en-suite bathroom, and premium bedding. Ideal for couples wanting a little extra comfort.</p>
+        <div class="amenities">
+          <span><em>🛏</em> Queen bed</span><span><em>📶</em> Fast WiFi</span><span><em>🚿</em> En-suite</span>
+          <span><em>🪟</em> Rooftop view</span><span><em>☕</em> Breakfast included</span><span><em>🧖</em> Premium bedding</span>
+        </div>
+        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
       </div>
     </div>
 
     <div class="room">
-      <div class="room-img">
-        <img src="/images/room-family.png" alt="Family Room">
-        <span class="price-badge">NPR 2,200 / Per night</span>
-      </div>
-      <div class="room-info">
-        <h3>Family Room</h3>
-        <p>Our largest room, perfect for families or small groups. Fits up to 4 guests with extra beds available on request.</p>
-        <div class="amenities">
-          <span><em>🛏</em> Bed</span><span><em>📶</em> WiFi</span><span><em>🚿</em> Hot Shower</span><span><em>🧳</em> Storage</span><span><em>☕</em> Breakfast</span>
+      <div class="room-img-wrap reveal-l">
+        <span class="room-deco"></span>
+        <div class="room-img">
+          <img src="/images/room-family.png" alt="Family Room">
+          <span class="price-badge">NPR 2,200 / night</span>
         </div>
-        <a href="#" class="btn-outline">Read more</a>
       </div>
+      <div class="room-info reveal-r">
+        <span class="eyebrow">03 — Family</span>
+        <h3>Family Room</h3>
+        <p>Our largest, most colorful room — perfect for families or small groups of friends. Comfortably fits up to four guests, with extra beds available on request.</p>
+        <div class="amenities">
+          <span><em>🛏</em> 3–4 beds</span><span><em>📶</em> Fast WiFi</span><span><em>🚿</em> Hot Shower</span>
+          <span><em>👨‍👩‍👧</em> Family friendly</span><span><em>☕</em> Breakfast included</span><span><em>🧳</em> Extra space</span>
+        </div>
+        <a href="#booking" class="btn-outline">Book this room <span>→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">The Experience</span>
+      <h2 class="reveal delay-1">More than just a <em>stay</em></h2>
+      <p class="section-sub reveal delay-2">Little touches that make the difference between a hotel and a home away from home.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal"><div class="exp-icon">☕</div><h4>Daily Breakfast</h4><p>Freshly cooked Nepali &amp; continental breakfast served in our open courtyard each morning.</p></div>
+      <div class="exp-card reveal delay-1"><div class="exp-icon">🥾</div><h4>Trek Planning</h4><p>Bimal personally helps plan day hikes, mountain flights, and longer Himalayan treks.</p></div>
+      <div class="exp-card reveal delay-2"><div class="exp-icon">🚗</div><h4>Airport Pickup</h4><p>Skip the haggling — let us arrange a friendly driver to collect you on arrival.</p></div>
+      <div class="exp-card reveal delay-3"><div class="exp-icon">🪷</div><h4>Local Tours</h4><p>Discover hidden temples, monasteries, and the best momos in Thamel with our local guides.</p></div>
     </div>
   </div>
 </section>
@@ -284,31 +499,43 @@
 <section class="testimonials">
   <div class="container">
     <div class="section-title">
-      <span class="accent" style="color:var(--accent)">Testimonials</span>
-      <h2>What Our Guests Say</h2>
+      <span class="eyebrow reveal">Guest Stories</span>
+      <h2 class="reveal delay-1">What our <em>guests say</em></h2>
     </div>
     <div class="t-track" id="tTrack">
       <div class="t-card active">
-        <div class="t-avatar"><img src="https://picsum.photos/seed/sarah/100" alt="Sarah"></div>
-        <p class="t-text">"Family Peace House is a peaceful and quiet place near Thamel. The owner Bimal is friendly and helpful — he organized a day hike and mountain flight for us. Highly recommended for young travelers!"</p>
-        <div class="t-name">Sarah M.</div><div class="t-date">March 2024</div>
+        <div class="t-quote">“</div>
+        <div class="t-avatar"><img src="https://picsum.photos/seed/sarah/120" alt="Sarah"></div>
+        <p class="t-text">Family Peace House is a peaceful and quiet place near Thamel. The owner Bimal is friendly and helpful — he organized a day hike and a mountain flight for us. Highly recommended for young travelers!</p>
+        <div class="t-name">Sarah M. — UK</div><div class="t-date">March 2024</div>
       </div>
       <div class="t-card">
-        <div class="t-avatar"><img src="https://picsum.photos/seed/marco/100" alt="Marco"></div>
-        <p class="t-text">"The guesthouse is in a quiet pedestrian street. There are open-air shared areas where you can relax and chat with other guests. I finally called it home!"</p>
-        <div class="t-name">Marco R.</div><div class="t-date">January 2024</div>
+        <div class="t-quote">“</div>
+        <div class="t-avatar"><img src="https://picsum.photos/seed/marco/120" alt="Marco"></div>
+        <p class="t-text">The guesthouse sits on a quiet pedestrian street. There are open-air shared areas where you can relax and chat with other guests. By day three I called it home.</p>
+        <div class="t-name">Marco R. — Italy</div><div class="t-date">January 2024</div>
       </div>
       <div class="t-card">
-        <div class="t-avatar"><img src="https://picsum.photos/seed/aisha/100" alt="Aisha"></div>
-        <p class="t-text">"Great hospitality. Made many great friends here. Budget friendly and perfect for solo travelers. Must visit!"</p>
-        <div class="t-name">Aisha K.</div><div class="t-date">April 2024</div>
+        <div class="t-quote">“</div>
+        <div class="t-avatar"><img src="https://picsum.photos/seed/aisha/120" alt="Aisha"></div>
+        <p class="t-text">Great hospitality. Made many great friends here. Budget friendly and absolutely perfect for solo travelers. A must visit in Kathmandu!</p>
+        <div class="t-name">Aisha K. — India</div><div class="t-date">April 2024</div>
       </div>
     </div>
     <div class="dots" id="dots">
-      <span class="dot active" data-i="0"></span>
-      <span class="dot" data-i="1"></span>
-      <span class="dot" data-i="2"></span>
+      <button class="dot active" data-i="0" aria-label="Slide 1"></button>
+      <button class="dot" data-i="1" aria-label="Slide 2"></button>
+      <button class="dot" data-i="2" aria-label="Slide 3"></button>
     </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="reveal">Ready to feel <em>at home</em> in Kathmandu?</h2>
+    <p class="reveal delay-1">Reserve your stay today — we'll have a hot cup of milk tea waiting.</p>
+    <a href="#booking" class="btn-ghost reveal delay-2">Book your stay →</a>
   </div>
 </section>
 
@@ -324,55 +551,74 @@
         familypeacehouse@gmail.com</p>
         <div class="socials">
           <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">📷</a>
-          <a href="#" aria-label="TripAdvisor">✈</a>
-          <a href="#" aria-label="WhatsApp">💬</a>
+          <a href="#" aria-label="Instagram">ig</a>
+          <a href="#" aria-label="TripAdvisor">ta</a>
+          <a href="#" aria-label="WhatsApp">wa</a>
         </div>
       </div>
       <div class="foot-col">
-        <h4>Quick Links</h4>
+        <h4>Explore</h4>
         <ul>
           <li><a href="#home">About Us</a></li>
           <li><a href="#rooms">Rooms</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#">Activities</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
       <div class="foot-col">
+        <h4>Hours</h4>
+        <ul>
+          <li>Reception: 24 / 7</li>
+          <li>Check-in: from 12:00</li>
+          <li>Check-out: until 11:00</li>
+          <li>Breakfast: 7:00 – 10:00</li>
+        </ul>
+      </div>
+      <div class="foot-col">
         <h4>Newsletter</h4>
-        <p>Subscribe to receive travel tips and special offers.</p>
+        <p>Travel tips, seasonal stories, and special offers — straight from Kathmandu.</p>
         <form class="news-form" id="newsForm">
           <input type="email" placeholder="Your email" required>
-          <button type="submit">Subscribe</button>
+          <button type="submit">Join</button>
         </form>
       </div>
     </div>
-    <div class="foot-bottom">© 2025 Family Peace House. All rights reserved.</div>
+    <div class="foot-bottom">© 2025 Family Peace House Pvt. Ltd. — Crafted with ♥ in Thamel, Kathmandu.</div>
   </div>
 </footer>
 
 <script>
+  // Nav scroll state
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>30);
+  });
+
   // Hamburger
   const hb=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
-  hb.addEventListener('click',()=>nl.classList.toggle('open'));
-  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  hb.addEventListener('click',()=>{hb.classList.toggle('open');nl.classList.toggle('open')});
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('open');nl.classList.remove('open')}));
 
   // Active nav on scroll
-  const sections=['home','rooms','gallery','contact'].map(id=>document.getElementById(id));
+  const sectionIds=['home','rooms','gallery','experience','contact'];
+  const sections=sectionIds.map(id=>document.getElementById(id)).filter(Boolean);
   const links=document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll',()=>{
-    const y=window.scrollY+120;
+    const y=window.scrollY+150;
     let cur='home';
-    sections.forEach(s=>{ if(s && s.offsetTop<=y) cur=s.id; });
-    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+    sections.forEach(s=>{ if(s.offsetTop<=y) cur=s.id; });
+    links.forEach(l=>{
+      const href=l.getAttribute('href');
+      if(href && href.startsWith('#')) l.classList.toggle('active',href==='#'+cur);
+    });
   });
 
   // Booking form
-  document.getElementById('bookingForm').addEventListener('submit',e=>{
+  document.getElementById('booking').addEventListener('submit',e=>{
     e.preventDefault();
     const f=e.target,d=new FormData(f);
-    if(!d.get('arrival')||!d.get('departure')||!d.get('name')||!d.get('email')){
+    if(!d.get('arrival')||!d.get('departure')||!d.get('email')){
       alert('Please fill in all required fields.');return;
     }
     if(new Date(d.get('departure'))<=new Date(d.get('arrival'))){
@@ -391,14 +637,44 @@
 
   // Testimonials carousel
   const cards=document.querySelectorAll('.t-card'),dots=document.querySelectorAll('.dot');
-  let idx=0;
+  let idx=0,timer;
   function show(i){
     cards.forEach((c,n)=>c.classList.toggle('active',n===i));
     dots.forEach((d,n)=>d.classList.toggle('active',n===i));
     idx=i;
   }
-  dots.forEach(d=>d.addEventListener('click',()=>show(+d.dataset.i)));
-  setInterval(()=>show((idx+1)%cards.length),6000);
+  function autoplay(){clearInterval(timer);timer=setInterval(()=>show((idx+1)%cards.length),6500);}
+  dots.forEach(d=>d.addEventListener('click',()=>{show(+d.dataset.i);autoplay();}));
+  autoplay();
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-zoom').forEach(el=>io.observe(el));
+
+  // Animated counters
+  const counters=document.querySelectorAll('[data-count]');
+  const cIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      const el=e.target;
+      const target=parseFloat(el.dataset.count);
+      const dec=parseInt(el.dataset.decimals||'0');
+      const dur=1800;const start=performance.now();
+      function tick(t){
+        const p=Math.min((t-start)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        const v=target*eased;
+        el.textContent=dec?v.toFixed(dec):Math.floor(v).toLocaleString();
+        if(p<1) requestAnimationFrame(tick);
+        else el.textContent=dec?target.toFixed(dec):target.toLocaleString()+(target>=1000?'+':'');
+      }
+      requestAnimationFrame(tick);
+      cIO.unobserve(el);
+    });
+  },{threshold:.4});
+  counters.forEach(c=>cIO.observe(c));
 </script>
 </body>
 </html>
