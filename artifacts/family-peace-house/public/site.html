@@ -1419,11 +1419,12 @@
     const bookBtn=document.getElementById('rdBookBtn');
     if(bookBtn){
       bookBtn.textContent='Continue to Booking →';
-      bookBtn.onclick=()=>closeRoomModal();
+      bookBtn.onclick=closeRoomModal;
     }
     document.getElementById('rdOverlay').classList.add('open');
     document.body.style.overflow='hidden';
     const closeBtn=document.getElementById('rdClose');
+    if(closeBtn) closeBtn.onclick=closeRoomModal;
     if(closeBtn) closeBtn.focus();
   }
 
@@ -1438,7 +1439,7 @@
   const rdPrev=document.getElementById('rdPrev');
   const rdNext=document.getElementById('rdNext');
   if(rdOverlay && rdClose && rdPrev && rdNext){
-    rdClose.addEventListener('click',closeRoomModal);
+    rdClose.onclick=closeRoomModal;
     rdOverlay.addEventListener('click',e=>{
       if(e.target===rdOverlay) closeRoomModal();
     });
