@@ -1557,6 +1557,18 @@
   });
   })();
 </script>
+<button class="assistant-launcher" id="assistantLauncher"><span class="assistant-icon">✦</span><span>AI Assistant</span></button>
+<aside class="assistant-panel" id="assistantPanel" aria-label="AI Assistant">
+  <div class="assistant-head">
+    <h3>AI Assistant</h3>
+    <button type="button" id="assistantClose">×</button>
+  </div>
+  <div class="assistant-messages" id="assistantMessages"></div>
+  <form class="assistant-input" id="assistantForm">
+    <input id="assistantInput" type="text" placeholder="Ask about rooms, business, pricing..." autocomplete="off" />
+    <button type="submit">Send</button>
+  </form>
+</aside>
 <!-- Room Detail Modal -->
 <div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
   <div class="rd-modal">
