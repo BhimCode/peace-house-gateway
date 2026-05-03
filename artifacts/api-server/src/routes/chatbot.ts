@@ -5,6 +5,7 @@ const router = Router();
 const businessFacts = [
   "Family Peace House is a peaceful family-run guesthouse in Thamel, Kathmandu.",
   "It offers rooms for solo travelers, couples, families, and shared-bathroom options.",
+  "It is located in Thamel, Kathmandu, Nepal.",
   "If pricing is unclear, guests should contact the property for current rates.",
   "The house is known for warm Nepali hospitality, courtyard breakfasts, and a calm atmosphere.",
   "For booking help, guests can call +977 1-4981138.",
@@ -29,7 +30,15 @@ function buildReply(message: string): string {
     return "You can ask about availability here, and for final confirmation please contact us directly. I can help you choose the right room first.";
   }
 
-  return "Thanks for asking. I can help with FAQs about the business, rooms, and current pricing. If you’re unsure about rates, please contact us for the latest price.";
+  if (text.includes("where") || text.includes("located") || text.includes("location")) {
+    return "We’re located in Thamel, Kathmandu, Nepal. If you need the exact address or help finding us, please contact us and we’ll guide you.";
+  }
+
+  if (text.includes("who are you") || text.includes("what are you") || text.includes("hello")) {
+    return "I’m AI Assistant for Family Peace House. I can help with questions about the business, rooms, and current pricing.";
+  }
+
+  return "Thanks for asking. I’m AI Assistant for Family Peace House, and I can help with FAQs about the business, rooms, location, and current pricing. If you’re unsure about rates, please contact us for the latest price.";
 }
 
 router.post("/chatbot", async (req, res) => {
