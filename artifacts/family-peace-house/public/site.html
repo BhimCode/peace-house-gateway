@@ -1379,8 +1379,10 @@
 
   // Hamburger
   const hb=document.getElementById('hamburger'),nl=document.getElementById('navLinks');
-  hb.addEventListener('click',()=>{hb.classList.toggle('open');nl.classList.toggle('open')});
-  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('open');nl.classList.remove('open')}));
+  if(hb&&nl){
+    hb.addEventListener('click',()=>{hb.classList.toggle('open');nl.classList.toggle('open')});
+    nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hb.classList.remove('open');nl.classList.remove('open')}));
+  }
 
   // Active nav on scroll
   const sectionIds=['home','rooms','gallery','experience','contact'];
@@ -1491,11 +1493,21 @@
     reviewAutoplay();
   }
 
-  // Reveal on scroll
-  const io=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.14,rootMargin:'0px 0px -60px 0px'});
-  document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-zoom').forEach(el=>io.observe(el));
+  // Reveal on scroll — robust: trigger immediately if in view, fallback after timeout
+  (function(){
+    const revealEls = document.querySelectorAll('.reveal,.reveal-l,.reveal-r,.reveal-zoom');
+    function showEl(el){ el.classList.add('in'); }
+    if('IntersectionObserver' in window){
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ showEl(e.target); io.unobserve(e.target); } });
+      },{threshold:0.05});
+      revealEls.forEach(el=>io.observe(el));
+    } else {
+      revealEls.forEach(showEl);
+    }
+    // Safety fallback: show everything after 2.5s in case observer never fires
+    setTimeout(()=>revealEls.forEach(showEl), 2500);
+  })();
 
   // Score bar animation
   const barIO=new IntersectionObserver((entries)=>{
@@ -1866,3 +1878,81 @@
       initAssistant();
     }
   })();
+</script>
+<!-- Room Detail Modal -->
+<div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
+  <div class="rd-modal">
+    <div class="rd-gallery">
+      <div class="rd-main-img">
+        <img id="rdMainImg" src="" alt="">
+        <button class="rd-nav-btn rd-nav-prev" id="rdPrev" aria-label="Previous image">&#8249;</button>
+        <button class="rd-nav-btn rd-nav-next" id="rdNext" aria-label="Next image">&#8250;</button>
+        <span class="rd-img-counter" id="rdCounter">1 / 3</span>
+        <span class="rd-cat-badge" id="rdCatBadge"></span>
+      </div>
+      <div class="rd-thumbs" id="rdThumbs"></div>
+    </div>
+    <div class="rd-details">
+      <div class="rd-top-bar">
+        <span class="rd-room-label" id="rdLabel"></span>
+        <button class="rd-close-btn" id="rdClose" aria-label="Close modal">&#10005;</button>
+      </div>
+      <div class="rd-scroll">
+        <div style="padding-top:16px">
+          <h2 class="rd-title" id="rdTitle"></h2>
+          <p class="rd-subtitle" id="rdSubtitle"></p>
+          <div class="rd-tags" id="rdTags"></div>
+          <div class="rd-stats" id="rdStats"></div>
+          <div class="rd-score-row" id="rdScoreRow"></div>
+          <p class="rd-desc" id="rdDesc"></p>
+          <div class="rd-section" id="rdBathSec"></div>
+          <div class="rd-section" id="rdViewSec"></div>
+          <div class="rd-section" id="rdFacSec"></div>
+          <div class="rd-no-smoke" id="rdSmoke"></div>
+        </div>
+      </div>
+      <div class="rd-cta-bar">
+        <a id="rdBookBtn" href="https://www.booking.com/hotel/np/family-peace-house.html" target="_blank" rel="noopener" class="rd-book-btn">Book This Room</a>
+        <span class="rd-bcom">via <a href="https://www.booking.com/hotel/np/family-peace-house.html" target="_blank" rel="noopener">Booking.com</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="assistant-launcher" id="assistantLauncher" aria-label="Open AI Receptionist">
+  <span class="assistant-icon">&#10022;</span><span>Maya &middot; AI</span>
+</button>
+
+<aside class="assistant-panel" id="assistantPanel" aria-label="Maya AI Receptionist">
+  <div class="assistant-head">
+    <div class="assistant-avatar">&#127968;</div>
+    <div class="assistant-head-info">
+      <h3>Maya</h3>
+      <span>AI Receptionist &middot; Family Peace House</span>
+    </div>
+    <div class="assistant-head-actions">
+      <button type="button" id="assistantMuteBtn" title="Toggle voice">&#128266;</button>
+      <button type="button" id="assistantClose" title="Close">&#10005;</button>
+    </div>
+  </div>
+  <div class="assistant-messages" id="assistantMessages"></div>
+  <div class="assistant-quick-btns" id="assistantQuickBtns">
+    <button class="assistant-quick-btn" data-q="What rooms do you have?">Rooms</button>
+    <button class="assistant-quick-btn" data-q="What are your prices?">Pricing</button>
+    <button class="assistant-quick-btn" data-q="Where are you located?">Location</button>
+    <button class="assistant-quick-btn" data-q="How do I book a room?">Book now</button>
+    <button class="assistant-quick-btn" data-q="What food do you serve?">Dining</button>
+    <button class="assistant-quick-btn" data-q="What are the check-in and check-out times?">Check-in</button>
+  </div>
+  <div class="assistant-input-bar">
+    <div class="assistant-input-row">
+      <input id="assistantInput" type="text" placeholder="Ask Maya anything..." autocomplete="off" />
+      <button class="assistant-btn-mic" id="assistantMicBtn" type="button" title="Tap to speak">&#127908;</button>
+      <button class="assistant-btn-send" id="assistantSendBtn" type="button">Send</button>
+    </div>
+    <div class="assistant-voice-status" id="assistantVoiceStatus"></div>
+  </div>
+</aside>
+
+</body>
+</html>
