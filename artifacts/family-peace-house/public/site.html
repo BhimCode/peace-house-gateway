@@ -1348,24 +1348,30 @@
     document.body.style.overflow='';
   }
 
-  document.getElementById('rdClose').addEventListener('click',closeRoomModal);
-  document.getElementById('rdOverlay').addEventListener('click',e=>{
-    if(e.target===document.getElementById('rdOverlay')) closeRoomModal();
-  });
-  document.getElementById('rdPrev').addEventListener('click',()=>{
-    if(!_rdRoom) return;
-    _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
-  });
-  document.getElementById('rdNext').addEventListener('click',()=>{
-    if(!_rdRoom) return;
-    _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
-  });
-  document.addEventListener('keydown',e=>{
-    if(!document.getElementById('rdOverlay').classList.contains('open')) return;
-    if(e.key==='Escape') closeRoomModal();
-    if(e.key==='ArrowLeft'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
-    if(e.key==='ArrowRight'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
-  });
+  const rdOverlay=document.getElementById('rdOverlay');
+  const rdClose=document.getElementById('rdClose');
+  const rdPrev=document.getElementById('rdPrev');
+  const rdNext=document.getElementById('rdNext');
+  if(rdOverlay && rdClose && rdPrev && rdNext){
+    rdClose.addEventListener('click',closeRoomModal);
+    rdOverlay.addEventListener('click',e=>{
+      if(e.target===rdOverlay) closeRoomModal();
+    });
+    rdPrev.addEventListener('click',()=>{
+      if(!_rdRoom) return;
+      _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
+    });
+    rdNext.addEventListener('click',()=>{
+      if(!_rdRoom) return;
+      _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
+    });
+    document.addEventListener('keydown',e=>{
+      if(!rdOverlay.classList.contains('open')) return;
+      if(e.key==='Escape') closeRoomModal();
+      if(e.key==='ArrowLeft'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx-1+_rdRoom.images.length)%_rdRoom.images.length);
+      if(e.key==='ArrowRight'&&_rdRoom) _rdRender(_rdRoom,(_rdIdx+1)%_rdRoom.images.length);
+    });
+  }
 
   // Wire up all "View Details" buttons
   document.querySelectorAll('.view-room-btn').forEach(btn=>{
