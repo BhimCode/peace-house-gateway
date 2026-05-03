@@ -11,40 +11,52 @@ const businessFacts = [
   "For booking help, guests can call +977 1-4981138.",
 ];
 
-function buildReply(message: string): string {
-  const text = message.toLowerCase();
+function hasAny(text: string, terms: string[]): boolean {
+  return terms.some((term) => text.includes(term));
+}
 
-  if (text.includes("price") || text.includes("rate") || text.includes("prize")) {
+function buildReply(message: string): string {
+  const text = message.toLowerCase().trim();
+
+  if (hasAny(text, ["price", "rates", "rate", "price list", "cost", "prize", "pricing"])) {
     return "Room prices can change, so the best option is to contact us for current rates. If you want, I can also help with room types and what each one includes.";
   }
 
-  if (text.includes("room") || text.includes("rooms")) {
+  if (hasAny(text, ["room", "rooms", "single", "double", "triple", "family room", "shared bathroom", "private bathroom"])) {
     return "We have rooms for solo travelers, couples, families, and shared-bathroom stays. If you tell me who is traveling, I can point you to the best option.";
   }
 
-  if (text.includes("check in") || text.includes("check-in") || text.includes("check out") || text.includes("check-out")) {
+  if (hasAny(text, ["check in", "check-in", "check out", "check-out", "arrival", "departure", "early check in", "late check out"])) {
     return "For check-in and check-out details, please contact us for the latest availability and timing. I can still help you with room guidance or booking questions.";
   }
 
-  if (text.includes("booking") || text.includes("reserve") || text.includes("reservation")) {
+  if (hasAny(text, ["booking", "book", "reserve", "reservation", "availability", "available"])) {
     return "You can ask about availability here, and for final confirmation please contact us directly. I can help you choose the right room first.";
   }
 
-  if (text.includes("where") || text.includes("located") || text.includes("location")) {
+  if (hasAny(text, ["where", "located", "location", "address", "how far", "near", "nearby"])) {
     return "We’re located in Thamel, Kathmandu, Nepal. If you need the exact address or help finding us, please contact us and we’ll guide you.";
   }
 
-  if (text.includes("who are you") || text.includes("what are you") || text.includes("hello")) {
+  if (hasAny(text, ["who are you", "what are you", "hello", "hi", "hey"])) {
     return "I’m AI Assistant for Family Peace House. I can help with questions about the business, rooms, and current pricing.";
   }
 
-  return "Thanks for asking. I’m AI Assistant for Family Peace House, and I can help with FAQs about the business, rooms, location, and current pricing. If you’re unsure about rates, please contact us for the latest price.";
+  return "I’m AI Assistant for Family Peace House. I can help with the business, room types, prices, location, check-in details, and availability. If you want current rates, please contact us for the latest price.";
 }
 
 router.post("/chatbot", async (req, res) => {
   const messages = Array.isArray(req.body?.messages) ? req.body.messages : [];
   const latest = messages.length ? String(messages[messages.length - 1]?.content ?? "") : "";
-  const reply = buildReply(latest);
+  const context = messages
+    .slice(-8)
+    .map((entry: unknown) => {
+      if (!entry || typeof entry !== "object") return "";
+      const item = entry as { role?: unknown; content?: unknown };
+      return `${String(item.role ?? "user")}: ${String(item.content ?? "")}`;
+    })
+    .join("\n");
+  const reply = buildReply(`${latest}\n${context}`);
 
   res.json({
     reply,
