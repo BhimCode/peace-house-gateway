@@ -1507,68 +1507,73 @@
 
   // Chatbot assistant
   (function(){
-    const launcher=document.getElementById('assistantLauncher');
-    const panel=document.getElementById('assistantPanel');
-    const closeBtn=document.getElementById('assistantClose');
-    const form=document.getElementById('assistantForm');
-    const input=document.getElementById('assistantInput');
-    const messagesEl=document.getElementById('assistantMessages');
-    if(!launcher || !panel || !closeBtn || !form || !input || !messagesEl) return;
-    const memory=[{role:'system',content:'You are the AI Assistant for Family Peace House. Answer FAQs about the business, rooms, and pricing. If unsure about rates, tell guests to contact the property for current rates. Be friendly and warm.'}];
+    const initAssistant=()=>{
+      const launcher=document.getElementById('assistantLauncher');
+      const panel=document.getElementById('assistantPanel');
+      const closeBtn=document.getElementById('assistantClose');
+      const form=document.getElementById('assistantForm');
+      const input=document.getElementById('assistantInput');
+      const messagesEl=document.getElementById('assistantMessages');
+      console.log('[AI Assistant] init', {launcher:!!launcher,panel:!!panel,closeBtn:!!closeBtn,form:!!form,input:!!input,messagesEl:!!messagesEl});
+      if(!launcher || !panel || !closeBtn || !form || !input || !messagesEl) return;
+      const memory=[{role:'system',content:'You are the AI Assistant for Family Peace House. Answer FAQs about the business, rooms, and pricing. If unsure about rates, tell guests to contact the property for current rates. Be friendly and warm.'}];
 
-    function addMessage(role, text){
-      const el=document.createElement('div');
-      el.className='assistant-msg '+role;
-      el.textContent=text;
-      messagesEl.appendChild(el);
-      messagesEl.scrollTop=messagesEl.scrollHeight;
-    }
-
-    function openPanel(){
-      panel.classList.add('open');
-      if(!messagesEl.children.length){
-        addMessage('bot','Hi, I’m AI Assistant. Ask me anything about rooms, the business, or pricing.');
+      function addMessage(role, text){
+        const el=document.createElement('div');
+        el.className='assistant-msg '+role;
+        el.textContent=text;
+        messagesEl.appendChild(el);
+        messagesEl.scrollTop=messagesEl.scrollHeight;
       }
-      input.focus();
-    }
 
-    launcher.addEventListener('click',()=>{
-      if(panel.classList.contains('open')) panel.classList.remove('open');
-      else openPanel();
-    });
-    closeBtn.addEventListener('click',()=>panel.classList.remove('open'));
-
-    form.addEventListener('submit',async(e)=>{
-      e.preventDefault();
-      const text=input.value.trim();
-      if(!text) return;
-      addMessage('user',text);
-      memory.push({role:'user',content:text});
-      input.value='';
-      try{
-        const resp=await fetch('/api/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:memory})});
-        const data=await resp.json();
-        const reply=data.reply||'Please contact us for current rates or more details.';
-        addMessage('bot',reply);
-        memory.push({role:'assistant',content:reply});
-      }catch(_){
-        addMessage('bot','Sorry, I could not respond right now. Please contact us for current rates.');
+      function openPanel(){
+        console.log('[AI Assistant] openPanel');
+        panel.classList.add('open');
+        if(!messagesEl.children.length){
+          addMessage('bot','Hi, I’m AI Assistant. Ask me anything about rooms, the business, or pricing.');
+        }
+        input.focus();
       }
-  });
+
+      launcher.addEventListener('click',()=>{
+        console.log('[AI Assistant] launcher clicked', {open:panel.classList.contains('open')});
+        if(panel.classList.contains('open')) panel.classList.remove('open');
+        else openPanel();
+      });
+      closeBtn.addEventListener('click',()=>{
+        console.log('[AI Assistant] close clicked');
+        panel.classList.remove('open');
+      });
+
+      form.addEventListener('submit',async(e)=>{
+        e.preventDefault();
+        const text=input.value.trim();
+        if(!text) return;
+        console.log('[AI Assistant] submit', text);
+        addMessage('user',text);
+        memory.push({role:'user',content:text});
+        input.value='';
+        try{
+          console.log('[AI Assistant] fetch /api/chatbot');
+          const resp=await fetch('/api/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:memory})});
+          const data=await resp.json();
+          const reply=data.reply||'Please contact us for current rates or more details.';
+          console.log('[AI Assistant] reply', reply);
+          addMessage('bot',reply);
+          memory.push({role:'assistant',content:reply});
+        }catch(_){
+          console.log('[AI Assistant] error');
+          addMessage('bot','Sorry, I could not respond right now. Please contact us for current rates.');
+        }
+      });
+    };
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',initAssistant,{once:true});
+    }else{
+      initAssistant();
+    }
   })();
 </script>
-<button class="assistant-launcher" id="assistantLauncher"><span class="assistant-icon">✦</span><span>AI Assistant</span></button>
-<aside class="assistant-panel" id="assistantPanel" aria-label="AI Assistant">
-  <div class="assistant-head">
-    <h3>AI Assistant</h3>
-    <button type="button" id="assistantClose">×</button>
-  </div>
-  <div class="assistant-messages" id="assistantMessages"></div>
-  <form class="assistant-input" id="assistantForm">
-    <input id="assistantInput" type="text" placeholder="Ask about rooms, business, pricing..." autocomplete="off" />
-    <button type="submit">Send</button>
-  </form>
-</aside>
 <!-- Room Detail Modal -->
 <div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
   <div class="rd-modal">
@@ -1608,6 +1613,19 @@
     </div>
   </div>
 </div>
+
+<button class="assistant-launcher" id="assistantLauncher"><span class="assistant-icon">✦</span><span>AI Assistant</span></button>
+<aside class="assistant-panel" id="assistantPanel" aria-label="AI Assistant">
+  <div class="assistant-head">
+    <h3>AI Assistant</h3>
+    <button type="button" id="assistantClose">×</button>
+  </div>
+  <div class="assistant-messages" id="assistantMessages"></div>
+  <form class="assistant-input" id="assistantForm">
+    <input id="assistantInput" type="text" placeholder="Ask about rooms, business, pricing..." autocomplete="off" />
+    <button type="submit">Send</button>
+  </form>
+</aside>
 
 </body>
 </html>
