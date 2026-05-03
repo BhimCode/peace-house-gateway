@@ -227,7 +227,8 @@
   .review-carousel{position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;margin-top:48px}
   .review-viewport{overflow:hidden;border-radius:24px}
   .review-track{display:flex;transition:transform .55s cubic-bezier(.22,1,.36,1);will-change:transform}
-  .review-card{min-width:100%;background:#fff;border:1px solid #ede8e0;border-radius:24px;padding:26px 28px;box-shadow:var(--shadow-sm);text-align:left}
+  .review-card{min-width:100%;background:#fff;border:1px solid #ede8e0;border-radius:24px;padding:26px 28px;box-shadow:var(--shadow-sm);text-align:left;box-sizing:border-box}
+  .review-card h4{font-size:24px;font-family:'Cormorant Garamond',serif;color:var(--dark);margin-bottom:14px}
   .review-top{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:14px}
   .review-user{display:flex;align-items:center;gap:12px}
   .review-avatar{width:42px;height:42px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
@@ -235,7 +236,6 @@
   .review-user p,.review-meta,.review-positive,.review-negative{font-size:13px;color:var(--muted);line-height:1.7}
   .review-score{background:var(--accent);color:#fff;border-radius:10px;min-width:44px;height:44px;padding:0 10px;display:flex;align-items:center;justify-content:center;font-weight:700}
   .review-meta{margin-bottom:8px}
-  .review-card h4{font-size:24px;font-family:'Cormorant Garamond',serif;color:var(--dark);margin-bottom:14px}
   .review-positive{margin-bottom:10px;padding-left:22px;position:relative}
   .review-positive::before{content:'☺';position:absolute;left:0;top:0;color:var(--accent)}
   .review-negative{padding-left:22px;position:relative}
@@ -733,6 +733,83 @@
       <div class="exp-card reveal delay-1"><div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="m3 20 5-10 4 6 3-4 6 8Z"/><path d="m14 8 1.5-3 1.5 3"/></svg></div><h4>Trek Planning</h4><p>Bimal personally helps plan day hikes, mountain flights, and longer Himalayan treks.</p></div>
       <div class="exp-card reveal delay-2"><div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><path d="M5 17H3a2 2 0 0 1-2-2V9l3-5h14l3 5v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M1 10h22"/></svg></div><h4>Airport Pickup</h4><p>Skip the haggling — let us arrange a friendly driver to collect you on arrival.</p></div>
       <div class="exp-card reveal delay-3"><div class="exp-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="28" height="28"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg></div><h4>Local Tours</h4><p>Discover hidden temples, monasteries, and the best momos in Thamel with our local guides.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Guest Reviews -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-title">
+      <span class="eyebrow reveal">Guest Reviews</span>
+      <h2 class="reveal delay-1">Real <em>Booking.com</em> reviews</h2>
+      <p class="section-sub reveal delay-2">Five verified guest reviews shown in a swipeable carousel.</p>
+    </div>
+    <div class="review-carousel reveal" id="reviewCarousel">
+      <button class="review-nav review-prev" id="reviewPrev" aria-label="Previous review">‹</button>
+      <div class="review-viewport">
+        <div class="review-track" id="reviewTrack">
+          <article class="review-card">
+            <div class="review-top">
+              <div class="review-user"><div class="review-avatar">L</div><div><h3>Leila</h3><p>Kazakhstan</p></div></div>
+              <div class="review-score">6.0</div>
+            </div>
+            <div class="review-meta">Reviewed: 26 March 2026 · Single Room with Shared Shower and Toilet</div>
+            <h4>OK for good location for bus departure</h4>
+            <p class="review-positive">Great location, close to the tourist bus pick up. Was able to lock the door.</p>
+            <p class="review-negative">It was OK for what it was. If you need to stay for one night before the bus departure, fine option.</p>
+          </article>
+          <article class="review-card">
+            <div class="review-top">
+              <div class="review-user"><div class="review-avatar">K</div><div><h3>Kayla</h3><p>Nepal</p></div></div>
+              <div class="review-score">8.0</div>
+            </div>
+            <div class="review-meta">Reviewed: 11 July 2024 · Double Room with Private Bathroom</div>
+            <h4>chill but good tamel vibes</h4>
+            <p class="review-positive">Loved the vibes, out of the hustle and bustle of Tamel. Maybe a little expensive, but a really nice comfortable room with clean sheets and hot water shower.</p>
+            <p class="review-negative">Not so much pricey in the room we booked since the windows were facing the streets and other apartments, but the patio was so cute.</p>
+          </article>
+          <article class="review-card">
+            <div class="review-top">
+              <div class="review-user"><div class="review-avatar">T</div><div><h3>Tania</h3><p>Moldova</p></div></div>
+              <div class="review-score">10</div>
+            </div>
+            <div class="review-meta">Reviewed: 18 February 2026 · Single Room with Shared Shower and Toilet</div>
+            <h4>Exceptional</h4>
+            <p class="review-positive">Family Peace House was a great place to stay in Kathmandu. I initially booked for one night but ended up staying a few extra days. Perfect location, good Wi‑Fi, hot shower, and a quiet neighborhood.</p>
+            <p class="review-negative">They could put more chairs and a table on the roof top for guest.</p>
+          </article>
+          <article class="review-card">
+            <div class="review-top">
+              <div class="review-user"><div class="review-avatar">S</div><div><h3>Sourav</h3><p>India</p></div></div>
+              <div class="review-score">10</div>
+            </div>
+            <div class="review-meta">Reviewed: 9 October 2025 · Single Room with Shared Shower and Toilet</div>
+            <h4>Peaceful stay with cheap cost near thamel</h4>
+            <p class="review-positive">Very peaceful environment just near the crowded thamel. If you want to stay near thamel with reasonable and cheap cost then this place is the best. Staffs are really helpful specially Bimal dai.</p>
+            <p class="review-negative">Place the bookshelf in reception area.</p>
+            <div class="review-response"><strong>Property response:</strong><p>Thank you Sourav ji for your beautiful comment. We happy...</p></div>
+          </article>
+          <article class="review-card">
+            <div class="review-top">
+              <div class="review-user"><div class="review-avatar">A</div><div><h3>Ana</h3><p>Portugal</p></div></div>
+              <div class="review-score">10</div>
+            </div>
+            <div class="review-meta">Reviewed: 14 April 2024 · Double Room with Private Bathroom</div>
+            <h4>We loved Family Peace House!</h4>
+            <p class="review-positive">We liked everything! The staff were super friendly and helpful. The location was so quiet, what a surprise waking up with the birds! Easy to walk and explore Kathmandu.</p>
+            <p class="review-negative">And was also very clean with nice sheets and a good hot shower.</p>
+          </article>
+        </div>
+      </div>
+      <button class="review-nav review-next" id="reviewNext" aria-label="Next review">›</button>
+    </div>
+    <div class="review-dots" id="reviewDots">
+      <button class="review-dot is-active" data-i="0" aria-label="Review 1"></button>
+      <button class="review-dot" data-i="1" aria-label="Review 2"></button>
+      <button class="review-dot" data-i="2" aria-label="Review 3"></button>
+      <button class="review-dot" data-i="3" aria-label="Review 4"></button>
+      <button class="review-dot" data-i="4" aria-label="Review 5"></button>
     </div>
   </div>
 </section>
