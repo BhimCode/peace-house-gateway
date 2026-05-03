@@ -133,6 +133,19 @@
   .booking-msg--success{background:#f0fdf4;border:1px solid #86efac;color:#166534}
   .booking-msg--error{background:#fff1f2;border:1px solid #fca5a5;color:#991b1b}
   .booking-msg a{color:inherit;font-weight:600;text-decoration:underline}
+  .assistant-launcher{position:fixed;right:22px;bottom:22px;z-index:1200;background:var(--accent);color:#fff;border-radius:999px;padding:14px 18px;box-shadow:var(--shadow-lg);font-weight:700;font-size:13px}
+  .assistant-panel{position:fixed;right:22px;bottom:78px;width:min(380px,calc(100vw - 44px));height:520px;background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);z-index:1200;display:none;overflow:hidden;border:1px solid #eadfcc}
+  .assistant-panel.open{display:flex;flex-direction:column}
+  .assistant-head{background:var(--dark);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+  .assistant-head h3{color:#fff;font-size:22px;font-style:italic;font-weight:500}
+  .assistant-head button{color:#fff;font-size:18px}
+  .assistant-messages{flex:1;overflow:auto;padding:18px;background:#fbf7f2;display:flex;flex-direction:column;gap:12px}
+  .assistant-msg{max-width:85%;padding:12px 14px;border-radius:16px;font-size:14px;line-height:1.55}
+  .assistant-msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
+  .assistant-msg.bot{align-self:flex-start;background:#fff;border:1px solid #eadfcc;color:var(--text);border-bottom-left-radius:4px}
+  .assistant-input{display:flex;gap:10px;padding:14px;background:#fff;border-top:1px solid #eadfcc}
+  .assistant-input input{flex:1;border:1px solid #e5dfd6;border-radius:999px;padding:12px 14px;font:inherit;outline:none}
+  .assistant-input button{background:var(--accent);color:#fff;border-radius:999px;padding:12px 16px;font-weight:700}
 
   /* ---------- Marquee features ---------- */
   .marquee{margin-top:80px;padding:24px 0;background:var(--dark);color:#fff;overflow:hidden;border-top:1px solid rgba(255,255,255,.05)}
@@ -1489,7 +1502,71 @@
       if(parent) openRoomModal(+parent.dataset.room);
     });
   });
+
+  // Chatbot assistant
+  (function(){
+    const launcher=document.getElementById('assistantLauncher');
+    const panel=document.getElementById('assistantPanel');
+    const closeBtn=document.getElementById('assistantClose');
+    const form=document.getElementById('assistantForm');
+    const input=document.getElementById('assistantInput');
+    const messagesEl=document.getElementById('assistantMessages');
+    if(!launcher || !panel || !closeBtn || !form || !input || !messagesEl) return;
+    const memory=[{role:'system',content:'You are the AI Assistant for Family Peace House. Answer FAQs about the business, rooms, and pricing. If unsure about rates, tell guests to contact the property for current rates. Be friendly and warm.'}];
+
+    function addMessage(role, text){
+      const el=document.createElement('div');
+      el.className='assistant-msg '+role;
+      el.textContent=text;
+      messagesEl.appendChild(el);
+      messagesEl.scrollTop=messagesEl.scrollHeight;
+    }
+
+    function openPanel(){
+      panel.classList.add('open');
+      if(!messagesEl.children.length){
+        addMessage('bot','Hi, I’m AI Assistant. Ask me anything about rooms, the business, or pricing.');
+      }
+      input.focus();
+    }
+
+    launcher.addEventListener('click',()=>{
+      if(panel.classList.contains('open')) panel.classList.remove('open');
+      else openPanel();
+    });
+    closeBtn.addEventListener('click',()=>panel.classList.remove('open'));
+
+    form.addEventListener('submit',async(e)=>{
+      e.preventDefault();
+      const text=input.value.trim();
+      if(!text) return;
+      addMessage('user',text);
+      memory.push({role:'user',content:text});
+      input.value='';
+      try{
+        const resp=await fetch('/api/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:memory})});
+        const data=await resp.json();
+        const reply=data.reply||'Please contact us for current rates or more details.';
+        addMessage('bot',reply);
+        memory.push({role:'assistant',content:reply});
+      }catch(_){
+        addMessage('bot','Sorry, I could not respond right now. Please contact us for current rates.');
+      }
+    });
+  })();
 </script>
+<button class="assistant-launcher" id="assistantLauncher">AI Assistant</button>
+<aside class="assistant-panel" id="assistantPanel" aria-label="AI Assistant">
+  <div class="assistant-head">
+    <h3>AI Assistant</h3>
+    <button type="button" id="assistantClose">×</button>
+  </div>
+  <div class="assistant-messages" id="assistantMessages"></div>
+  <form class="assistant-input" id="assistantForm">
+    <input id="assistantInput" type="text" placeholder="Ask about rooms, business, pricing..." autocomplete="off" />
+    <button type="submit">Send</button>
+  </form>
+</aside>
 <!-- Room Detail Modal -->
 <div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
   <div class="rd-modal">
