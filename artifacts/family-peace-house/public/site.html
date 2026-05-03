@@ -1262,7 +1262,7 @@
      view:['Garden view','Terrace access'],
      facilities:['Terrace','Safety deposit box','Socket near bed','Desk','Seating area','Soundproofing','Fan','Wake-up service','Carpeted','Laptop safe','Clothes rack'],
      smoking:'No smoking',
-     images:['/images/room-twin.png','/images/courtyard-flags.png','/images/exterior.png']},
+     images:['@assets/image_1777732859131.png','@assets/image_1777732889726.png','@assets/image_1777732894869.png','@assets/image_1777732900381.png']},
     {id:2,num:'02',label:'Couples',
      name:'Double Room',subtitle:'with Private Bathroom',
      size:'14 m²',beds:'1 extra-large double bed',guests:2,score:8.0,reviews:52,
@@ -1348,8 +1348,9 @@
     sec('rdFacSec','Facilities',room.facilities);
     document.getElementById('rdSmoke').innerHTML=
       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>&ensp;Smoking: ${room.smoking}`;
-    document.getElementById('rdBookBtn').onclick=()=>closeRoomModal();
     _rdRender(room,0);
+    document.getElementById('rdBookBtn').textContent='Continue to Booking →';
+    document.getElementById('rdBookBtn').onclick=()=>closeRoomModal();
     document.getElementById('rdOverlay').classList.add('open');
     document.body.style.overflow='hidden';
     document.getElementById('rdClose').focus();
