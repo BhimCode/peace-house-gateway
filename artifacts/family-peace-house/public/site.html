@@ -1163,11 +1163,14 @@
   })();
 
   // Newsletter
-  document.getElementById('newsForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    alert('Thanks for subscribing!');
-    e.target.reset();
-  });
+  const newsForm=document.getElementById('newsForm');
+  if(newsForm){
+    newsForm.addEventListener('submit',e=>{
+      e.preventDefault();
+      alert('Thanks for subscribing!');
+      e.target.reset();
+    });
+  }
 
   // Review carousel
   const reviewTrack=document.getElementById('reviewTrack');
@@ -1185,11 +1188,11 @@
     clearInterval(reviewTimer);
     reviewTimer=setInterval(()=>setReview(reviewIndex+1),7000);
   }
-  reviewDots.forEach(d=>d.addEventListener('click',()=>{setReview(+d.dataset.i);reviewAutoplay();}));
-  reviewPrev.addEventListener('click',()=>{setReview(reviewIndex-1);reviewAutoplay();});
-  reviewNext.addEventListener('click',()=>{setReview(reviewIndex+1);reviewAutoplay();});
   const reviewCarousel=document.getElementById('reviewCarousel');
   if(reviewCarousel && reviewTrack && reviewCards.length && reviewDots.length){
+    reviewDots.forEach(d=>d.addEventListener('click',()=>{setReview(+d.dataset.i);reviewAutoplay();}));
+    if(reviewPrev) reviewPrev.addEventListener('click',()=>{setReview(reviewIndex-1);reviewAutoplay();});
+    if(reviewNext) reviewNext.addEventListener('click',()=>{setReview(reviewIndex+1);reviewAutoplay();});
     reviewCarousel.addEventListener('mouseenter',()=>clearInterval(reviewTimer));
     reviewCarousel.addEventListener('mouseleave',reviewAutoplay);
     setReview(0);
