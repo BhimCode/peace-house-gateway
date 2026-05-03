@@ -415,8 +415,8 @@
   /* Gallery panel */
   .rd-gallery{position:relative;background:#1a1512;display:flex;flex-direction:column;overflow:hidden}
   .rd-main-img{flex:1;min-height:0;overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;background:#120f0d}
-  .rd-main-img img{width:100%;height:100%;object-fit:contain;display:block;
-    transition:transform .6s ease;will-change:transform}
+  .rd-main-img img{max-width:100%;max-height:100%;width:auto;height:auto;display:block;
+    object-fit:contain;transition:transform .6s ease;will-change:transform;image-rendering:auto}
   .rd-main-img:hover img{transform:scale(1.04)}
   .rd-nav-btn{position:absolute;top:50%;transform:translateY(-50%);
     background:rgba(255,255,255,.12);backdrop-filter:blur(8px);
@@ -1377,7 +1377,10 @@
   function _rdRender(room,idx){
     _rdIdx=idx;
     const img=document.getElementById('rdMainImg');
-    img.src=room.images[idx]; img.alt=room.name+' photo '+(idx+1);
+    img.src=room.images[idx];
+    img.alt=room.name+' photo '+(idx+1);
+    img.loading='eager';
+    img.decoding='async';
     document.getElementById('rdCounter').textContent=(idx+1)+' / '+room.images.length;
     const thumbs=document.getElementById('rdThumbs');
     thumbs.innerHTML=room.images.map((s,i)=>
