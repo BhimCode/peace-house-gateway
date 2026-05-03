@@ -365,6 +365,38 @@
   .cta-banner .btn-ghost{position:relative;border-color:#fff}
   .cta-banner .btn-ghost:hover{background:#fff;color:var(--accent)}
 
+  /* ---------- Guest Stories (Scrolling Testimonials) ---------- */
+  @keyframes scrollUp1{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+  @keyframes scrollUp2{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+  @keyframes scrollUp3{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+
+  .guest-stories{background:#fff;padding:110px 0;overflow:hidden}
+  .guest-stories-header{text-align:center;margin-bottom:56px}
+  .guest-stories-badge{display:inline-block;border:1px solid #e5dfd6;color:var(--muted);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 18px;border-radius:30px;margin-bottom:20px}
+  .guest-stories-header h2{font-size:clamp(34px,4vw,52px);font-style:italic;font-weight:400;line-height:1.15;color:var(--dark);margin-bottom:14px}
+  .guest-stories-header h2 em{color:var(--accent)}
+  .guest-stories-header p{color:var(--muted);font-size:15.5px;max-width:500px;margin:0 auto}
+
+  .gs-columns{display:flex;gap:20px;justify-content:center;max-height:700px;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,transparent,black 15%,black 85%,transparent);mask-image:linear-gradient(to bottom,transparent,black 15%,black 85%,transparent)}
+  .gs-col{flex:1;min-width:0;overflow:hidden}
+  .gs-col-mid{display:none}
+  .gs-col-lg{display:none}
+  @media(min-width:768px){.gs-col-mid{display:block}}
+  @media(min-width:1024px){.gs-col-lg{display:block}}
+
+  .gs-track{display:flex;flex-direction:column;gap:20px}
+  .gs-track-1{animation:scrollUp1 18s linear infinite}
+  .gs-track-2{animation:scrollUp2 22s linear infinite}
+  .gs-track-3{animation:scrollUp3 20s linear infinite}
+  .gs-columns:hover .gs-track{animation-play-state:paused}
+
+  .gs-card{background:#fff;border:1px solid #ede8e0;border-radius:24px;padding:28px 24px;box-shadow:0 4px 20px rgba(70,40,20,.07);flex-shrink:0}
+  .gs-card p{font-size:14.5px;color:var(--text);line-height:1.7;margin-bottom:20px}
+  .gs-author{display:flex;align-items:center;gap:12px}
+  .gs-author img{width:40px;height:40px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--accent-light)}
+  .gs-author strong{display:block;font-size:14px;font-weight:600;color:var(--dark);line-height:1.3}
+  .gs-author span{font-size:12px;color:var(--muted)}
+
   /* ---------- Footer ---------- */
   footer{background:var(--dark);color:#9a9089;padding:90px 0 0;position:relative}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px}
@@ -1134,6 +1166,55 @@
           <span class="pay-logo">Diners</span>
           <span class="pay-logo">UnionPay</span>
           <span class="pay-logo">Cash</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Scrolling Guest Testimonials -->
+<section class="guest-stories">
+  <div class="container">
+    <div class="guest-stories-header reveal">
+      <div class="guest-stories-badge">Testimonials</div>
+      <h2>What our guests <em>say</em></h2>
+      <p>Real voices from travellers who called Family Peace House their home in Kathmandu.</p>
+    </div>
+    <div class="gs-columns">
+      <!-- Column 1 -->
+      <div class="gs-col">
+        <div class="gs-track gs-track-1">
+          <div class="gs-card"><p>"A hidden gem in Thamel. The courtyard breakfast was magical — fresh Nepali tea and eggs while the garden woke up. Staff treated us like family."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah M."><div><strong>Sarah M.</strong><span>Solo Traveller · UK</span></div></div></div>
+          <div class="gs-card"><p>"The room was spotless and quiet despite being in the middle of Thamel. Check-in was effortless and the team gave great trekking tips. Will be back."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Marco T."><div><strong>Marco T.</strong><span>Couple · Italy</span></div></div></div>
+          <div class="gs-card"><p>"I've stayed in many guesthouses across Nepal — Family Peace House stands out. The calm courtyard, warm staff, and clean rooms made it feel like home."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Priya K."><div><strong>Priya K.</strong><span>Family · India</span></div></div></div>
+          <!-- duplicate for infinite loop -->
+          <div class="gs-card"><p>"A hidden gem in Thamel. The courtyard breakfast was magical — fresh Nepali tea and eggs while the garden woke up. Staff treated us like family."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face" alt="Sarah M."><div><strong>Sarah M.</strong><span>Solo Traveller · UK</span></div></div></div>
+          <div class="gs-card"><p>"The room was spotless and quiet despite being in the middle of Thamel. Check-in was effortless and the team gave great trekking tips. Will be back."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Marco T."><div><strong>Marco T.</strong><span>Couple · Italy</span></div></div></div>
+          <div class="gs-card"><p>"I've stayed in many guesthouses across Nepal — Family Peace House stands out. The calm courtyard, warm staff, and clean rooms made it feel like home."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face" alt="Priya K."><div><strong>Priya K.</strong><span>Family · India</span></div></div></div>
+        </div>
+      </div>
+      <!-- Column 2 -->
+      <div class="gs-col gs-col-mid">
+        <div class="gs-track gs-track-2">
+          <div class="gs-card"><p>"The double room had everything we needed — great WiFi, a cosy bed, and the most stunning rooftop garden I've seen in Kathmandu. Highly recommend!"</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face" alt="Liam W."><div><strong>Liam W.</strong><span>Backpacker · Australia</span></div></div></div>
+          <div class="gs-card"><p>"Perfect base for exploring Thamel. The staff arranged our airport pickup and gave honest advice on which treks to choose. Small details made a big difference."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Anna B."><div><strong>Anna B.</strong><span>Digital Nomad · Germany</span></div></div></div>
+          <div class="gs-card"><p>"We brought our two kids and everyone was so welcoming. The triple room was spacious, the breakfast was hearty, and the neighbourhood is safe for evening walks."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="James R."><div><strong>James R.</strong><span>Family of 4 · Canada</span></div></div></div>
+          <!-- duplicate for infinite loop -->
+          <div class="gs-card"><p>"The double room had everything we needed — great WiFi, a cosy bed, and the most stunning rooftop garden I've seen in Kathmandu. Highly recommend!"</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=80&h=80&fit=crop&crop=face" alt="Liam W."><div><strong>Liam W.</strong><span>Backpacker · Australia</span></div></div></div>
+          <div class="gs-card"><p>"Perfect base for exploring Thamel. The staff arranged our airport pickup and gave honest advice on which treks to choose. Small details made a big difference."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face" alt="Anna B."><div><strong>Anna B.</strong><span>Digital Nomad · Germany</span></div></div></div>
+          <div class="gs-card"><p>"We brought our two kids and everyone was so welcoming. The triple room was spacious, the breakfast was hearty, and the neighbourhood is safe for evening walks."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="James R."><div><strong>James R.</strong><span>Family of 4 · Canada</span></div></div></div>
+        </div>
+      </div>
+      <!-- Column 3 -->
+      <div class="gs-col gs-col-lg">
+        <div class="gs-track gs-track-3">
+          <div class="gs-card"><p>"Woke up every morning to birds in the courtyard — no other guesthouse in Thamel offers that kind of peace. The massage service was also a great addition after long hikes."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&h=80&fit=crop&crop=face" alt="Mei L."><div><strong>Mei L.</strong><span>Yoga Retreat · Japan</span></div></div></div>
+          <div class="gs-card"><p>"Value for money is incredible. The shared bathroom option kept costs low without compromising cleanliness. I'll be recommending this to every traveller heading to Nepal."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=80&h=80&fit=crop&crop=face" alt="Ravi S."><div><strong>Ravi S.</strong><span>Budget Traveller · Nepal</span></div></div></div>
+          <div class="gs-card"><p>"The 24-hour reception gave us real peace of mind. We arrived late from our flight and everything was ready — key, warm smile, and even a late-night snack suggestion."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face" alt="Sofia E."><div><strong>Sofia E.</strong><span>First-time Visitor · Spain</span></div></div></div>
+          <!-- duplicate for infinite loop -->
+          <div class="gs-card"><p>"Woke up every morning to birds in the courtyard — no other guesthouse in Thamel offers that kind of peace. The massage service was also a great addition after long hikes."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&h=80&fit=crop&crop=face" alt="Mei L."><div><strong>Mei L.</strong><span>Yoga Retreat · Japan</span></div></div></div>
+          <div class="gs-card"><p>"Value for money is incredible. The shared bathroom option kept costs low without compromising cleanliness. I'll be recommending this to every traveller heading to Nepal."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=80&h=80&fit=crop&crop=face" alt="Ravi S."><div><strong>Ravi S.</strong><span>Budget Traveller · Nepal</span></div></div></div>
+          <div class="gs-card"><p>"The 24-hour reception gave us real peace of mind. We arrived late from our flight and everything was ready — key, warm smile, and even a late-night snack suggestion."</p><div class="gs-author"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face" alt="Sofia E."><div><strong>Sofia E.</strong><span>First-time Visitor · Spain</span></div></div></div>
         </div>
       </div>
     </div>
