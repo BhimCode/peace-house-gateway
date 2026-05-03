@@ -164,13 +164,20 @@
   .section-title h2 em{color:var(--accent)}
   .section-sub{color:var(--muted);max-width:560px;margin:18px auto 0;font-size:15.5px}
 
-  .gallery{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:240px 240px;gap:18px}
-  .gallery-vertical{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
-  .gallery-vertical .gimg{height:220px}
+  .gallery{position:relative;height:740px;overflow:hidden;border-radius:18px;box-shadow:var(--shadow-lg)}
+  .gallery-vertical{display:flex;flex-direction:column;gap:0;animation:galleryMove 28s ease-in-out infinite}
+  .gallery-vertical:hover{animation-play-state:paused}
+  .gallery-vertical .gimg{height:240px;border-radius:0;box-shadow:none;flex-shrink:0}
   .gallery-vertical .gimg img{animation:verticalFloat 12s ease-in-out infinite alternate}
   @keyframes verticalFloat{
-    from{transform:translateY(0) scale(1.08)}
-    to{transform:translateY(-14px) scale(1.08)}
+    from{transform:translateY(0) scale(1.04)}
+    to{transform:translateY(-14px) scale(1.04)}
+  }
+  @keyframes galleryMove{
+    0%,100%{transform:translateY(0)}
+    25%{transform:translateY(-10px)}
+    50%{transform:translateY(0)}
+    75%{transform:translateY(10px)}
   }
   .gimg{position:relative;overflow:hidden;border-radius:8px;cursor:pointer;box-shadow:var(--shadow-sm);transition:.5s}
   .gimg.tall{grid-row:span 2}
@@ -589,29 +596,19 @@
 </section>
 
 <!-- Gallery -->
-<section class="gallery-section" id="gallery">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow reveal">Our Spaces</span>
-      <h2 class="reveal delay-1">A glimpse of <em>home</em></h2>
-      <p class="section-sub reveal delay-2">From the prayer-flag courtyard to the rooftop garden, every corner is made for slowing down.</p>
-    </div>
-    <div class="gallery">
-      <div class="gimg tall reveal-zoom"><img src="@assets/image_1777787997951.png" alt="Guesthouse exterior courtyard"><div class="label"><span class="label-s">Outdoor</span><span class="label-t">Courtyard View</span></div></div>
-      <div class="gimg wide reveal-zoom delay-1"><img src="@assets/image_1777788090013.png" alt="Green alley beside guesthouse"><div class="label"><span class="label-s">Arrival</span><span class="label-t">Peaceful Lane</span></div></div>
-      <div class="gimg reveal-zoom delay-2"><img src="@assets/image_1777788047214.png" alt="Guests dining in the courtyard"><div class="label"><span class="label-s">Mornings</span><span class="label-t">Courtyard Breakfast</span></div></div>
-      <div class="gimg reveal-zoom delay-3"><img src="@assets/image_1777788084135.png" alt="Floral bed room"><div class="label"><span class="label-s">Stay</span><span class="label-t">Quiet Guest Room</span></div></div>
-    </div>
-  </div>
-</section>
-
 <section class="gallery-section" style="padding-top:0">
   <div class="container">
-    <div class="gallery-vertical">
-      <div class="gimg reveal-zoom"><img src="@assets/image_1777787975069.png" alt="Breakfast plate"><div class="label"><span class="label-s">Dining</span><span class="label-t">Breakfast Plate</span></div></div>
-      <div class="gimg reveal-zoom delay-1"><img src="@assets/image_1777787983774.png" alt="Full breakfast spread"><div class="label"><span class="label-s">Dining</span><span class="label-t">Tea and Breakfast</span></div></div>
-      <div class="gimg reveal-zoom delay-2"><img src="@assets/image_1777788051976.png" alt="Indoor lounge and books"><div class="label"><span class="label-s">Inside</span><span class="label-t">Reading Corner</span></div></div>
-      <div class="gimg reveal-zoom delay-3"><img src="@assets/image_1777788119624.png" alt="Outdoor dining area"><div class="label"><span class="label-s">Courtyard</span><span class="label-t">Outdoor Dining</span></div></div>
+    <div class="gallery">
+      <div class="gallery-vertical">
+        <div class="gimg reveal-zoom"><img src="/images/image_1777787975069.png" alt="Breakfast plate"><div class="label"><span class="label-s">Dining</span><span class="label-t">Breakfast Plate</span></div></div>
+        <div class="gimg reveal-zoom delay-1"><img src="/images/image_1777787983774.png" alt="Full breakfast spread"><div class="label"><span class="label-s">Dining</span><span class="label-t">Tea and Breakfast</span></div></div>
+        <div class="gimg reveal-zoom delay-2"><img src="/images/image_1777788051976.png" alt="Indoor lounge and books"><div class="label"><span class="label-s">Inside</span><span class="label-t">Reading Corner</span></div></div>
+        <div class="gimg reveal-zoom delay-3"><img src="/images/image_1777788119624.png" alt="Outdoor dining area"><div class="label"><span class="label-s">Courtyard</span><span class="label-t">Outdoor Dining</span></div></div>
+        <div class="gimg reveal-zoom"><img src="/images/image_1777787997951.png" alt="Guesthouse exterior courtyard"><div class="label"><span class="label-s">Outdoor</span><span class="label-t">Courtyard View</span></div></div>
+        <div class="gimg reveal-zoom delay-1"><img src="/images/image_1777788090013.png" alt="Green alley beside guesthouse"><div class="label"><span class="label-s">Arrival</span><span class="label-t">Peaceful Lane</span></div></div>
+        <div class="gimg reveal-zoom delay-2"><img src="/images/image_1777788047214.png" alt="Guests dining in the courtyard"><div class="label"><span class="label-s">Mornings</span><span class="label-t">Courtyard Breakfast</span></div></div>
+        <div class="gimg reveal-zoom delay-3"><img src="/images/image_1777788084135.png" alt="Floral bed room"><div class="label"><span class="label-s">Stay</span><span class="label-t">Quiet Guest Room</span></div></div>
+      </div>
     </div>
   </div>
 </section>
