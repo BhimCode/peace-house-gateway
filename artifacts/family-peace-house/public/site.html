@@ -133,21 +133,43 @@
   .booking-msg--success{background:#f0fdf4;border:1px solid #86efac;color:#166534}
   .booking-msg--error{background:#fff1f2;border:1px solid #fca5a5;color:#991b1b}
   .booking-msg a{color:inherit;font-weight:600;text-decoration:underline}
-  .assistant-launcher{position:fixed !important;right:0;top:50%;transform:translateY(-50%);z-index:99999 !important;background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:#fff;border-radius:18px 0 0 18px;padding:16px 12px;box-shadow:var(--shadow-lg);font-weight:700;font-size:13px;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:1px;display:flex;align-items:center;gap:8px;pointer-events:auto}
+  /* ---- AI Receptionist Widget ---- */
+  .assistant-launcher{position:fixed !important;right:0;top:50%;transform:translateY(-50%);z-index:99999 !important;background:linear-gradient(180deg,var(--accent),var(--accent-dark));color:#fff;border-radius:18px 0 0 18px;padding:16px 12px;box-shadow:var(--shadow-lg);font-weight:700;font-size:13px;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:1px;display:flex;align-items:center;gap:8px;pointer-events:auto;transition:.3s}
+  .assistant-launcher:hover{padding-right:18px;box-shadow:var(--shadow-md)}
   .assistant-launcher .assistant-icon{display:block;font-size:20px;line-height:1;margin-bottom:8px;writing-mode:horizontal-tb;text-orientation:initial}
-  .assistant-panel{position:fixed;right:72px;top:50%;transform:translateY(-50%);width:min(380px,calc(100vw - 92px));height:520px;background:#fff;border-radius:18px;box-shadow:var(--shadow-lg);z-index:99998;display:none;overflow:hidden;border:1px solid #eadfcc;pointer-events:auto}
-  .assistant-panel.open{display:flex;flex-direction:column}
-  .assistant-head{background:var(--dark);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
-  .assistant-head h3{color:#fff;font-size:22px;font-style:italic;font-weight:500}
-  .assistant-head button{color:#fff;font-size:20px;line-height:1;padding:4px 8px;border-radius:999px}
-  .assistant-head button:hover{background:rgba(255,255,255,.12)}
-  .assistant-messages{flex:1;overflow:auto;padding:18px;background:#fbf7f2;display:flex;flex-direction:column;gap:12px}
-  .assistant-msg{max-width:85%;padding:12px 14px;border-radius:16px;font-size:14px;line-height:1.55}
+  .assistant-panel{position:fixed;right:72px;top:50%;transform:translateY(-50%);width:min(420px,calc(100vw - 92px));height:580px;background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);z-index:99998;display:none;overflow:hidden;border:1px solid #eadfcc;pointer-events:auto;flex-direction:column}
+  .assistant-panel.open{display:flex}
+  .assistant-head{background:var(--dark);color:#fff;padding:14px 18px;display:flex;align-items:center;gap:12px}
+  .assistant-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-dark));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .assistant-head-info{flex:1}
+  .assistant-head-info h3{color:#fff;font-size:16px;font-weight:700;margin:0;line-height:1.2}
+  .assistant-head-info span{font-size:11px;color:rgba(255,255,255,.6);letter-spacing:.5px}
+  .assistant-head-actions{display:flex;gap:6px}
+  .assistant-head-actions button{color:rgba(255,255,255,.7);font-size:16px;line-height:1;padding:6px 8px;border-radius:8px;transition:.2s}
+  .assistant-head-actions button:hover{background:rgba(255,255,255,.12);color:#fff}
+  .assistant-messages{flex:1;overflow-y:auto;padding:16px;background:#fbf7f2;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+  .assistant-msg{max-width:88%;padding:11px 14px;border-radius:16px;font-size:13.5px;line-height:1.6;word-break:break-word}
   .assistant-msg.user{align-self:flex-end;background:var(--accent);color:#fff;border-bottom-right-radius:4px}
-  .assistant-msg.bot{align-self:flex-start;background:#fff;border:1px solid #eadfcc;color:var(--text);border-bottom-left-radius:4px}
-  .assistant-input{display:flex;gap:10px;padding:14px;background:#fff;border-top:1px solid #eadfcc}
-  .assistant-input input{flex:1;border:1px solid #e5dfd6;border-radius:999px;padding:12px 14px;font:inherit;outline:none}
-  .assistant-input button{background:var(--accent);color:#fff;border-radius:999px;padding:12px 16px;font-weight:700}
+  .assistant-msg.bot{align-self:flex-start;background:#fff;border:1px solid #eadfcc;color:var(--text);border-bottom-left-radius:4px;position:relative}
+  .assistant-msg.bot.speaking{border-color:var(--accent);box-shadow:0 0 0 2px rgba(232,104,58,.2)}
+  .assistant-msg.thinking{opacity:.6;font-style:italic}
+  .assistant-speak-btn{position:absolute;bottom:6px;right:8px;background:none;border:none;font-size:14px;cursor:pointer;opacity:.4;transition:.2s;padding:2px}
+  .assistant-speak-btn:hover{opacity:1}
+  .assistant-input-bar{padding:12px 14px;background:#fff;border-top:1px solid #eadfcc;display:flex;flex-direction:column;gap:8px}
+  .assistant-input-row{display:flex;gap:8px;align-items:center}
+  .assistant-input-row input{flex:1;border:1.5px solid #e5dfd6;border-radius:999px;padding:10px 16px;font:inherit;font-size:14px;outline:none;transition:.2s;background:#fbf7f2}
+  .assistant-input-row input:focus{border-color:var(--accent);background:#fff}
+  .assistant-btn-send{background:var(--accent);color:#fff;border-radius:999px;padding:10px 18px;font-weight:700;font-size:13px;transition:.2s;white-space:nowrap}
+  .assistant-btn-send:hover{background:var(--accent-dark)}
+  .assistant-btn-send:disabled{opacity:.5;cursor:not-allowed}
+  .assistant-btn-mic{width:38px;height:38px;border-radius:50%;border:1.5px solid #e5dfd6;background:#fbf7f2;color:var(--muted);display:flex;align-items:center;justify-content:center;font-size:16px;transition:.25s;flex-shrink:0}
+  .assistant-btn-mic:hover{border-color:var(--accent);color:var(--accent)}
+  .assistant-btn-mic.listening{background:var(--accent);border-color:var(--accent);color:#fff;animation:micPulse 1.2s ease-in-out infinite}
+  @keyframes micPulse{0%,100%{box-shadow:0 0 0 0 rgba(232,104,58,.4)}50%{box-shadow:0 0 0 8px rgba(232,104,58,0)}}
+  .assistant-voice-status{font-size:11px;color:var(--muted);text-align:center;min-height:16px;letter-spacing:.3px}
+  .assistant-quick-btns{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 10px;background:#fff}
+  .assistant-quick-btn{font-size:11.5px;padding:5px 12px;border:1px solid #e5dfd6;border-radius:999px;color:var(--muted);background:#fbf7f2;cursor:pointer;transition:.2s;white-space:nowrap}
+  .assistant-quick-btn:hover{border-color:var(--accent);color:var(--accent);background:#fff}
 
   /* ---------- Marquee features ---------- */
   .marquee{margin-top:80px;padding:24px 0;background:var(--dark);color:#fff;overflow:hidden;border-top:1px solid rgba(255,255,255,.05)}
@@ -1664,127 +1686,183 @@
     });
   });
 
-  // Chatbot assistant
+  // Maya — AI Receptionist with Voice
   (function(){
     const initAssistant=()=>{
-      const launcher=document.getElementById('assistantLauncher');
-      const panel=document.getElementById('assistantPanel');
-      const closeBtn=document.getElementById('assistantClose');
-      const form=document.getElementById('assistantForm');
-      const input=document.getElementById('assistantInput');
-      const messagesEl=document.getElementById('assistantMessages');
-      console.log('[AI Assistant] init', {launcher:!!launcher,panel:!!panel,closeBtn:!!closeBtn,form:!!form,input:!!input,messagesEl:!!messagesEl});
-      if(!launcher || !panel || !closeBtn || !form || !input || !messagesEl) return;
-      const memory=[{role:'system',content:'You are the AI Assistant for Family Peace House. Answer FAQs about the business, rooms, and pricing. If unsure about rates, tell guests to contact the property for current rates. Be friendly and warm.'}];
+      const launcher   = document.getElementById('assistantLauncher');
+      const panel      = document.getElementById('assistantPanel');
+      const closeBtn   = document.getElementById('assistantClose');
+      const muteBtn    = document.getElementById('assistantMuteBtn');
+      const input      = document.getElementById('assistantInput');
+      const messagesEl = document.getElementById('assistantMessages');
+      const sendBtn    = document.getElementById('assistantSendBtn');
+      const micBtn     = document.getElementById('assistantMicBtn');
+      const statusEl   = document.getElementById('assistantVoiceStatus');
+      const quickBtns  = document.querySelectorAll('.assistant-quick-btn');
+      if(!launcher||!panel||!closeBtn||!input||!messagesEl||!sendBtn) return;
 
-      function addMessage(role, text){
-        const el=document.createElement('div');
-        el.className='assistant-msg '+role;
-        el.textContent=text;
+      const memory = [];
+      let voiceEnabled = true;
+      let isSending = false;
+      let currentAudio = null;
+      let recognition = null;
+
+      function addMessage(role, text, opts){
+        opts = opts||{};
+        const el = document.createElement('div');
+        el.className = 'assistant-msg ' + role + (opts.thinking?' thinking':'');
+        el.textContent = text;
+        if(role==='bot' && !opts.thinking){
+          const speakBtn = document.createElement('button');
+          speakBtn.className = 'assistant-speak-btn';
+          speakBtn.title = 'Read aloud';
+          speakBtn.textContent = '\uD83D\uDD0A';
+          speakBtn.addEventListener('click', ()=>speakText(text, el));
+          el.appendChild(speakBtn);
+        }
         messagesEl.appendChild(el);
-        messagesEl.scrollTop=messagesEl.scrollHeight;
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        return el;
+      }
+
+      function removeMessage(el){ if(el&&el.parentNode) el.parentNode.removeChild(el); }
+
+      async function speakText(text, msgEl){
+        if(!voiceEnabled) return;
+        if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+        if(msgEl) msgEl.classList.add('speaking');
+        try{
+          const resp = await fetch('/api/speak',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({text})
+          });
+          if(!resp.ok) throw new Error('TTS failed');
+          const blob = await resp.blob();
+          const url  = URL.createObjectURL(blob);
+          const audio = new Audio(url);
+          currentAudio = audio;
+          audio.onended = ()=>{ if(msgEl) msgEl.classList.remove('speaking'); URL.revokeObjectURL(url); currentAudio=null; };
+          audio.onerror = ()=>{ if(msgEl) msgEl.classList.remove('speaking'); };
+          audio.play();
+        }catch(e){
+          if(msgEl) msgEl.classList.remove('speaking');
+          console.warn('[Maya] TTS error', e);
+        }
+      }
+
+      async function sendMessage(text){
+        if(isSending||!text.trim()) return;
+        isSending=true;
+        sendBtn.disabled=true;
+        addMessage('user', text);
+        memory.push({role:'user', content:text});
+        input.value='';
+        const thinking = addMessage('bot','Maya is typing…',{thinking:true});
+        try{
+          const resp = await fetch('/api/chatbot',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({messages:memory})
+          });
+          const data = await resp.json();
+          const reply = data.reply || 'Please contact us at +977 1-4981138 for help.';
+          removeMessage(thinking);
+          const msgEl = addMessage('bot', reply);
+          memory.push({role:'assistant', content:reply});
+          if(voiceEnabled) speakText(reply, msgEl);
+        }catch(_){
+          removeMessage(thinking);
+          addMessage('bot','Sorry, I could not respond right now. Please call us at +977 1-4981138.');
+        }finally{
+          isSending=false;
+          sendBtn.disabled=false;
+          input.focus();
+        }
+      }
+
+      function setupMic(){
+        const SpeechRecognition = window.SpeechRecognition||window.webkitSpeechRecognition;
+        if(!SpeechRecognition||!micBtn){ if(micBtn) micBtn.style.display='none'; return; }
+        recognition = new SpeechRecognition();
+        recognition.lang='en-US';
+        recognition.interimResults=true;
+        recognition.continuous=false;
+        let finalTranscript='';
+        recognition.onstart=()=>{
+          micBtn.classList.add('listening');
+          if(statusEl) statusEl.textContent='Listening… speak now';
+          finalTranscript='';
+        };
+        recognition.onresult=(e)=>{
+          let interim='';
+          for(let i=e.resultIndex;i<e.results.length;i++){
+            if(e.results[i].isFinal) finalTranscript+=e.results[i][0].transcript;
+            else interim+=e.results[i][0].transcript;
+          }
+          input.value = finalTranscript||interim;
+        };
+        recognition.onend=()=>{
+          micBtn.classList.remove('listening');
+          if(statusEl) statusEl.textContent='';
+          if(finalTranscript.trim()) sendMessage(finalTranscript.trim());
+        };
+        recognition.onerror=(e)=>{
+          micBtn.classList.remove('listening');
+          if(statusEl) statusEl.textContent = e.error==='not-allowed'?'Mic access denied - please allow microphone':'Could not hear you. Try again.';
+          setTimeout(()=>{ if(statusEl) statusEl.textContent=''; }, 3000);
+        };
+        micBtn.addEventListener('click',()=>{
+          if(micBtn.classList.contains('listening')){ recognition.stop(); return; }
+          try{ recognition.start(); }catch(_){}
+        });
       }
 
       function openPanel(){
-        console.log('[AI Assistant] openPanel');
         panel.classList.add('open');
         if(!messagesEl.children.length){
-          addMessage('bot','Hi, I’m AI Assistant. Ask me anything about rooms, the business, or pricing.');
+          const greeting = 'Namaste! I am Maya, your AI receptionist at Family Peace House. How can I help you today - rooms, dining, check-in, or local tips?';
+          const el = addMessage('bot', greeting);
+          if(voiceEnabled) speakText(greeting, el);
         }
         input.focus();
       }
 
       launcher.addEventListener('click',()=>{
-        console.log('[AI Assistant] launcher clicked', {open:panel.classList.contains('open')});
         if(panel.classList.contains('open')) panel.classList.remove('open');
         else openPanel();
       });
       closeBtn.addEventListener('click',()=>{
-        console.log('[AI Assistant] close clicked');
         panel.classList.remove('open');
+        if(currentAudio){currentAudio.pause();currentAudio=null;}
       });
 
-      form.addEventListener('submit',async(e)=>{
-        e.preventDefault();
-        const text=input.value.trim();
-        if(!text) return;
-        console.log('[AI Assistant] submit', text);
-        addMessage('user',text);
-        memory.push({role:'user',content:text});
-        input.value='';
-        try{
-          console.log('[AI Assistant] fetch /api/chatbot');
-          const resp=await fetch('/api/chatbot',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:memory})});
-          const data=await resp.json();
-          const reply=data.reply||'Please contact us for current rates or more details.';
-          console.log('[AI Assistant] reply', reply);
-          addMessage('bot',reply);
-          memory.push({role:'assistant',content:reply});
-        }catch(_){
-          console.log('[AI Assistant] error');
-          addMessage('bot','Sorry, I could not respond right now. Please contact us for current rates.');
-        }
+      if(muteBtn){
+        muteBtn.addEventListener('click',()=>{
+          voiceEnabled=!voiceEnabled;
+          muteBtn.textContent=voiceEnabled?'\uD83D\uDD0A':'\uD83D\uDD07';
+          if(!voiceEnabled&&currentAudio){currentAudio.pause();currentAudio=null;}
+        });
+      }
+
+      sendBtn.addEventListener('click',()=>sendMessage(input.value.trim()));
+      input.addEventListener('keydown',(e)=>{
+        if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(input.value.trim());}
       });
+
+      quickBtns.forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const q=btn.dataset.q;
+          if(q) sendMessage(q);
+        });
+      });
+
+      setupMic();
     };
+
     if(document.readyState==='loading'){
       document.addEventListener('DOMContentLoaded',initAssistant,{once:true});
     }else{
       initAssistant();
     }
   })();
-</script>
-<!-- Room Detail Modal -->
-<div class="rd-overlay" id="rdOverlay" role="dialog" aria-modal="true" aria-label="Room details">
-  <div class="rd-modal">
-    <div class="rd-gallery">
-      <div class="rd-main-img">
-        <img id="rdMainImg" src="" alt="">
-        <button class="rd-nav-btn rd-nav-prev" id="rdPrev" aria-label="Previous image">&#8249;</button>
-        <button class="rd-nav-btn rd-nav-next" id="rdNext" aria-label="Next image">&#8250;</button>
-        <span class="rd-img-counter" id="rdCounter">1 / 3</span>
-        <span class="rd-cat-badge" id="rdCatBadge"></span>
-      </div>
-      <div class="rd-thumbs" id="rdThumbs"></div>
-    </div>
-    <div class="rd-details">
-      <div class="rd-top-bar">
-        <span class="rd-room-label" id="rdLabel"></span>
-        <button class="rd-close-btn" id="rdClose" aria-label="Close modal">&#10005;</button>
-      </div>
-      <div class="rd-scroll">
-        <div style="padding-top:16px">
-          <h2 class="rd-title" id="rdTitle"></h2>
-          <p class="rd-subtitle" id="rdSubtitle"></p>
-          <div class="rd-tags" id="rdTags"></div>
-          <div class="rd-stats" id="rdStats"></div>
-          <div class="rd-score-row" id="rdScoreRow"></div>
-          <p class="rd-desc" id="rdDesc"></p>
-          <div class="rd-section" id="rdBathSec"></div>
-          <div class="rd-section" id="rdViewSec"></div>
-          <div class="rd-section" id="rdFacSec"></div>
-          <div class="rd-no-smoke" id="rdSmoke"></div>
-        </div>
-      </div>
-      <div class="rd-cta-bar">
-        <a href="#booking" class="rd-book-btn" id="rdBookBtn">Check Availability →</a>
-        <div class="rd-bcom">or <a href="https://www.booking.com/hotel/np/kathmandu-family-house.en-gb.html" target="_blank" rel="noopener">Booking.com</a></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<button class="assistant-launcher" id="assistantLauncher"><span class="assistant-icon">✦</span><span>AI Assistant</span></button>
-<aside class="assistant-panel" id="assistantPanel" aria-label="AI Assistant">
-  <div class="assistant-head">
-    <h3>AI Assistant</h3>
-    <button type="button" id="assistantClose">×</button>
-  </div>
-  <div class="assistant-messages" id="assistantMessages"></div>
-  <form class="assistant-input" id="assistantForm">
-    <input id="assistantInput" type="text" placeholder="Ask about rooms, business, pricing..." autocomplete="off" />
-    <button type="submit">Send</button>
-  </form>
-</aside>
-
-</body>
-</html>
