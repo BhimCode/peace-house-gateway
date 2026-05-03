@@ -1,0 +1,44 @@
+I've taken a look at your site—[Family Peace House](https://peace-house-gateway--uniqueadhikari.replit.app/site.html). Since you've confirmed there are no console errors and private mode didn't help, the issue is likely a **CSS/Layout conflict** or a **Targeting error** in your JavaScript.
+
+Based on the visual layout of your site, here are the three most likely culprits:
+
+### 1. The "Invisible Wall" (Z-Index)
+Your AI Assistant button is positioned in a fixed spot on the right. If the main content container or the "Guest Reviews" section has a high `z-index` or a `transform` property (which creates a new stacking context), it might be "covering" the button even if the button looks like it's on top.
+* **The Fix:** Force the button to the absolute front.
+    ```css
+    /* Add this to your assistant button class */
+    .ai-assistant-btn {
+        z-index: 99999 !important;
+        position: fixed !important;
+    }
+    ```
+
+### 2. ID/Class Mismatch
+Check your `script.js` (or wherever your logic lives). If you are using `document.getElementById('ai-btn')` but the button in `site.html` actually has `class="ai-btn"`, the listener will never attach.
+* **The Check:** Look at the HTML for the button: 
+    `<button id="assistant-trigger">✦ AI Assistant</button>`
+* **The JS:** Ensure it matches exactly: 
+    `document.querySelector('#assistant-trigger').addEventListener(...)`
+
+### 3. "Dead Zone" from the Replit Overlay
+Replit sometimes injects a small "Badge" or an invisible feedback layer in the bottom corners of the preview window. 
+* **The Test:** In your CSS, temporarily change the position of the button to the top:
+    `top: 20px; right: 20px;`
+* If it works at the top but not at the bottom, something in the Replit environment (or a global footer container) is intercepting the click.
+
+### 4. The Event "Bubbling" Issue
+If the button is inside a container that also has a click event (like a slider or a link), the click might be getting "hijacked" or cancelled.
+* **The Fix:** Try adding `event.stopPropagation()` to your click handler:
+    ```javascript
+    const btn = document.querySelector('.your-button-class');
+    btn.onclick = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("I am finally opening!");
+        // open panel code
+    };
+    ```
+
+**Pro Tip:** Try clicking the **very edge** of the button. If it works on the edge but not the center, you definitely have an invisible element sitting on top of it. 
+
+Which CSS framework are you using for this—is it raw CSS or a library like Tailwind?
